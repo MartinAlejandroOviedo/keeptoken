@@ -1,0 +1,316 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "title": "¿Qué es KeepToken?",
+        "content": "KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT, diseñada para proteger el ahorro de las personas trabajadoras, emprendedores y comercios. Construida sobre la red Polygon, garantiza operaciones rápidas, económicas y transparentes.",
+        "image_url": "https://picsum.photos/800/400?random=1",
+        "created_at": "2024-03-20T12:00:00Z",
+        "updated_at": "2024-03-20T12:00:00Z",
+        "author_id": 1,
+        "categories": [1],
+        "tags": [1, 2]
+      },
+      {
+        "id": 2,
+        "title": "Gobernanza Democrática con Validación Humana",
+        "content": "Para participar en las decisiones del sistema, se deben cumplir dos requisitos: tener al menos 100 KTK y estar verificado como persona humana. La gobernanza no se habilita hasta que haya al menos 1.000.000 de ahorristas.",
+        "image_url": "https://picsum.photos/800/400?random=2",
+        "created_at": "2024-03-20T13:00:00Z",
+        "updated_at": "2024-03-20T13:00:00Z",
+        "author_id": 1,
+        "categories": [2],
+        "tags": [3, 4]
+      },
+      {
+        "id": 3,
+        "title": "Seguridad en la Blockchain",
+        "content": "KeepToken implementa las últimas tecnologías de seguridad para proteger tus activos digitales. Utilizamos contratos inteligentes auditados y múltiples capas de verificación para garantizar la seguridad de tus tokens.",
+        "image_url": "https://picsum.photos/800/400?random=3",
+        "created_at": "2024-03-20T14:00:00Z",
+        "updated_at": "2024-03-20T14:00:00Z",
+        "author_id": 1,
+        "categories": [3],
+        "tags": [1, 4]
+      },
+      {
+        "id": 4,
+        "title": "Escalabilidad y Rendimiento",
+        "content": "Construido sobre la red Polygon, KeepToken ofrece transacciones instantáneas y comisiones ultra bajas. Nuestra arquitectura está diseñada para manejar millones de transacciones diarias sin comprometer la seguridad.",
+        "image_url": "https://picsum.photos/800/400?random=4",
+        "created_at": "2024-03-20T15:00:00Z",
+        "updated_at": "2024-03-20T15:00:00Z",
+        "author_id": 1,
+        "categories": [3],
+        "tags": [2, 3]
+      },
+      {
+        "id": 5,
+        "title": "El Futuro del Ahorro Digital",
+        "content": "KeepToken revoluciona el concepto de ahorro digital, combinando la estabilidad del USDT con la flexibilidad de una criptomoneda. Descubre cómo estamos transformando el futuro del ahorro.",
+        "image_url": "https://picsum.photos/800/400?random=5",
+        "created_at": "2024-03-20T16:00:00Z",
+        "updated_at": "2024-03-20T16:00:00Z",
+        "author_id": 1,
+        "categories": [1],
+        "tags": [1, 2]
+      },
+      {
+        "id": 6,
+        "title": "Comunidad y Desarrollo",
+        "content": "La comunidad KeepToken es el corazón de nuestro proyecto. Participa en el desarrollo, comparte ideas y ayuda a dar forma al futuro de la plataforma a través de nuestra gobernanza democrática.",
+        "image_url": "https://picsum.photos/800/400?random=6",
+        "created_at": "2024-03-20T17:00:00Z",
+        "updated_at": "2024-03-20T17:00:00Z",
+        "author_id": 1,
+        "categories": [2],
+        "tags": [3, 4]
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Introducción"
+      },
+      {
+        "id": 2,
+        "name": "Gobernanza"
+      },
+      {
+        "id": 3,
+        "name": "Características"
+      }
+    ],
+    "tags": [
+      {
+        "id": 1,
+        "name": "Criptomoneda"
+      },
+      {
+        "id": 2,
+        "name": "Estable"
+      },
+      {
+        "id": 3,
+        "name": "Democracia"
+      },
+      {
+        "id": 4,
+        "name": "Validación"
+      }
+    ],
+    "menus": [
+      {
+        "id": 1,
+        "name": "Principal",
+        "submenus": [
+          {
+            "id": 1,
+            "name": "Inicio",
+            "url": "#inicio"
+          },
+          {
+            "id": 2,
+            "name": "Características",
+            "url": "#caracteristicas"
+          },
+          {
+            "id": 3,
+            "name": "Gobernanza",
+            "url": "#gobernanza"
+          },
+          {
+            "id": 4,
+            "name": "Blog",
+            "url": "#blog"
+          },
+          {
+            "id": 5,
+            "name": "Contacto",
+            "url": "#contacto"
+          }
+        ]
+      }
+    ],
+    "page_metadata": {
+      "id": 1,
+      "page_title": "KeepToken - Guarda tu Futuro",
+      "meta_description": "La criptomoneda de ahorro pensada para la gente común. KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT.",
+      "meta_keywords": "cryptomoneda, ahorro, USDT, Polygon, gobernanza, validación humana",
+      "meta_author": "Martin Alejandro Oviedo"
+    },
+    "authors": [
+      {
+        "id": 1,
+        "name": "Martin Alejandro Oviedo",
+        "email": "contacto@keeptoken.com"
+      }
+    ],
+    "blocks": [
+      {
+        "id": 1,
+        "name": "Valor Estable",
+        "content": "Cada token KTK equivale a 1 USDT. No hay emisión descontrolada: los tokens se acuñan al comprarse y se queman al venderse.",
+        "icon": "bx-dollar-circle",
+        "tags": ["Estabilidad", "Seguridad"]
+      },
+      {
+        "id": 2,
+        "name": "Comisiones Ultra Bajas",
+        "content": "La comisión inicial es del 0.49% por operación, ajustable por la comunidad validada, y siempre con un tope del 1%.",
+        "icon": "bx-transfer-alt",
+        "tags": ["Económico", "Rápido"]
+      },
+      {
+        "id": 3,
+        "name": "Tu Colchón Digital",
+        "content": "KTK es una caja de ahorro en tu bolsillo. No necesitás banco. No necesitás permiso. Lo usás como quieras: para guardar, enviar, cobrar o gastar.",
+        "icon": "bx-wallet",
+        "tags": ["Accesible", "Flexible"]
+      },
+      {
+        "id": 4,
+        "name": "Seguridad Blockchain",
+        "content": "Construido sobre la red Polygon, con contratos inteligentes auditados y múltiples capas de verificación para garantizar la seguridad de tus tokens.",
+        "icon": "bx-lock-alt",
+        "tags": ["Auditado", "Seguro"]
+      },
+      {
+        "id": 5,
+        "name": "Escalabilidad",
+        "content": "Diseñado para manejar millones de transacciones diarias sin comprometer la seguridad. Arquitectura optimizada para el crecimiento.",
+        "icon": "bx-line-chart",
+        "tags": ["Rendimiento", "Crecimiento"]
+      },
+      {
+        "id": 6,
+        "name": "Interoperabilidad",
+        "content": "Integración con múltiples plataformas y servicios. Compatible con wallets populares y exchanges principales. Fácil acceso y uso.",
+        "icon": "bx-network-chart",
+        "tags": ["Integración", "Accesibilidad"]
+      },
+      {
+        "id": 7,
+        "name": "Transparencia Total",
+        "content": "Todas las transacciones son públicas y verificables en la blockchain. Auditorías regulares y reportes transparentes de reservas.",
+        "icon": "bx-show-alt",
+        "tags": ["Verificable", "Auditable"]
+      },
+      {
+        "id": 8,
+        "name": "Educación Financiera",
+        "content": "Recursos educativos y herramientas para aprender sobre finanzas descentralizadas. Comunidad activa de apoyo y aprendizaje.",
+        "icon": "bx-book-open",
+        "tags": ["Aprendizaje", "Comunidad"]
+      },
+      {
+        "id": 9,
+        "name": "Sostenibilidad",
+        "content": "Operamos en Polygon, una red eficiente energéticamente. Comprometidos con el desarrollo sostenible y responsable.",
+        "icon": "bx-leaf",
+        "tags": ["Eficiente", "Responsable"]
+      }
+    ],
+    "footer": {
+      "id": 1,
+      "content": "© 2024 KeepToken. Todos los derechos reservados. | <a href='https://github.com/tuusuario' class='text-blue-400 hover:text-blue-300'>GitHub</a> | <a href='#' class='text-blue-400 hover:text-blue-300'>Contrato en Polygonscan</a>"
+    },
+    "menu": [
+        { "title": "Inicio", "url": "#inicio" },
+        { "title": "Características", "url": "#caracteristicas" },
+        { "title": "Gobernanza", "url": "#gobernanza" },
+        { "title": "Blog", "url": "#blog" },
+        { "title": "Contacto", "url": "#contacto" }
+    ],
+    "features": [
+        {
+            "title": "Seguridad Máxima",
+            "description": "Implementamos las más avanzadas medidas de seguridad para proteger tus tokens."
+        },
+        {
+            "title": "Gobernanza Comunitaria",
+            "description": "Los poseedores de tokens tienen voz y voto en las decisiones importantes."
+        },
+        {
+            "title": "Escalabilidad",
+            "description": "Diseñado para crecer y adaptarse a las necesidades de la comunidad."
+        }
+    ],
+    "governance": {
+        "id": 1,
+        "title": "Gobernanza Democrática",
+        "description": "Un sistema de gobernanza diseñado para dar voz a la comunidad y asegurar decisiones transparentes y justas.",
+        "features": [
+            {
+                "id": 1,
+                "name": "Validación Humana",
+                "content": "Sistema de verificación de identidad para asegurar que cada voto proviene de una persona real. Implementamos múltiples capas de seguridad y privacidad.",
+                "icon": "bx-user-check",
+                "tags": ["Seguridad", "Privacidad"]
+            },
+            {
+                "id": 2,
+                "name": "Votación Ponderada",
+                "content": "El peso de cada voto se determina por la cantidad de KTK poseídos, con un sistema de límites para evitar concentración de poder.",
+                "icon": "bx-pie-chart-alt",
+                "tags": ["Equidad", "Balance"]
+            },
+            {
+                "id": 3,
+                "name": "Propuestas Comunitarias",
+                "content": "Cualquier miembro validado puede presentar propuestas. Las mejores ideas son seleccionadas por la comunidad para su implementación.",
+                "icon": "bx-bulb",
+                "tags": ["Innovación", "Participación"]
+            },
+            {
+                "id": 4,
+                "name": "Transparencia Total",
+                "content": "Todas las votaciones y decisiones son registradas en la blockchain, accesibles para cualquier miembro de la comunidad.",
+                "icon": "bx-show",
+                "tags": ["Auditable", "Abierto"]
+            },
+            {
+                "id": 5,
+                "name": "Períodos de Gobernanza",
+                "content": "Sistema de períodos definidos para la toma de decisiones, permitiendo una planificación estratégica a largo plazo.",
+                "icon": "bx-calendar",
+                "tags": ["Estructura", "Planificación"]
+            },
+            {
+                "id": 6,
+                "name": "Delegación de Votos",
+                "content": "Los poseedores de KTK pueden delegar sus votos a representantes de confianza, manteniendo la flexibilidad del sistema.",
+                "icon": "bx-group",
+                "tags": ["Flexibilidad", "Representación"]
+            },
+            {
+                "id": 7,
+                "name": "Mecanismos de Emergencia",
+                "content": "Protocolos especiales para situaciones críticas, con múltiples capas de seguridad y consenso.",
+                "icon": "bx-shield-quarter",
+                "tags": ["Seguridad", "Resiliencia"]
+            },
+            {
+                "id": 8,
+                "name": "Educación en Gobernanza",
+                "content": "Programas educativos para ayudar a la comunidad a entender y participar efectivamente en la gobernanza.",
+                "icon": "bx-book-open",
+                "tags": ["Educación", "Empoderamiento"]
+            },
+            {
+                "id": 9,
+                "name": "Retroalimentación Continua",
+                "content": "Sistema de encuestas y feedback para evaluar y mejorar constantemente los procesos de gobernanza.",
+                "icon": "bx-chart",
+                "tags": ["Mejora", "Evolución"]
+            }
+        ],
+        "requirements": {
+            "minimum_tokens": 100,
+            "minimum_users": 1000000,
+            "validation_process": "KYC + Verificación Humana",
+            "voting_period": "7 días",
+            "quorum": "51% de participación"
+        }
+    }
+}

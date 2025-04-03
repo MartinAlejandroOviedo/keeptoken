@@ -1,12 +1,936 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT, diseñada para proteger el ahorro de las personas trabajadoras, emprendedores y comercios.">
+    <title>KeepToken - Guarda tu Futuro</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="KeepToken | La Criptomoneda de Ahorro">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://keeptoken.com">
+    <meta property="og:image" content="https://keeptoken.com/assets/favicon.svg">
+    <meta property="og:description" content="La criptomoneda de ahorro pensada para la gente común. KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT.">
+    <meta property="og:site_name" content="KeepToken">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KeepToken | La Criptomoneda de Ahorro">
+    <meta name="twitter:description" content="La criptomoneda de ahorro pensada para la gente común. KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT.">
+    <meta name="twitter:image" content="https://keeptoken.com/assets/favicon.svg">
+    <meta name="twitter:url" content="https://keeptoken.com">
+    
+    <!-- Author -->
+    <meta name="author" content="Martin Alejandro Oviedo">
+    <meta name="email" content="contacto@keeptoken.com">
+    
+    <!-- Styles -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="/node_modules/gsap/dist/gsap.min.js" type="text/javascript"></script>
+    <script src="/node_modules/gsap/dist/ScrollTrigger.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" type="text/javascript"></script>
+
+    <style>
+        @property --rotate {
+            syntax: "<angle>";
+            initial-value: 132deg;
+            inherits: false;
+        }
+
+        :root {
+            --card-height: 65vh;
+            --card-width: calc(var(--card-height) / 1.5);
+            --size: 20px;
+            /* Paleta de colores neón */
+            --neon-blue: #00f3ff;
+            --neon-cyan: #00ffcc;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff2d95;
+            --neon-green: #39ff14;
+            --neon-yellow: #f7ff00;
+            --dark-bg: rgba(10, 10, 10, 0.8);
+            --card-bg: rgba(26, 26, 26, 0.8);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .text-content {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .text-gray-300 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+        }
+
+        .text-gray-400 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .font-bold {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .neon-text {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue),
+                         0 0 20px var(--neon-blue),
+                         0 0 30px var(--neon-blue);
+        }
+        
+        .neon-border {
+            position: relative;
+            border-radius: 8px;
+            padding: 20px;
+            background: linear-gradient(0deg, #000, #272727);
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .neon-border::before, .neon-border::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            background: linear-gradient(45deg, 
+                var(--neon-blue),
+                var(--neon-cyan),
+                var(--neon-green),
+                var(--neon-yellow),
+                var(--neon-pink),
+                var(--neon-purple),
+                var(--neon-blue),
+                var(--neon-cyan),
+                var(--neon-green),
+                var(--neon-yellow)
+            );
+            background-size: 400%;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            z-index: -1;
+            animation: steam 20s linear infinite;
+            border-radius: 8px;
+        }
+
+        .neon-border::after {
+            filter: blur(0px);
+        }
+
+        @keyframes steam {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: rgba(17, 17, 34, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        .hero-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                from 180deg at 50% 70%,
+                var(--neon-blue) 0deg,
+                var(--neon-cyan) 72deg,
+                var(--neon-green) 144deg,
+                var(--neon-yellow) 216deg,
+                var(--neon-pink) 288deg,
+                var(--neon-purple) 360deg
+            );
+            mask: radial-gradient(circle at 50% 50%, white 2px, transparent 2.5px) 50% 50% / var(--size) var(--size), 
+                  url("https://assets.codepen.io/605876/noise-mask.png") 256px 50% / 256px 256px;
+            mask-composite: intersect;
+            animation: flicker 20s infinite linear;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 65%;
+            height: 250px;
+            user-select: none;
+            background: rgb(47 47 47 / 0%);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .hero-title {
+            font: 400 19vh "Varela Round", sans-serif;
+            color: var(--neon-blue);
+            text-shadow: 0 0 1vw var(--neon-blue),
+                         0 0 3vw var(--neon-blue),
+                         0 0 10vw var(--neon-blue),
+                         0 0 10vw var(--neon-blue),
+                         0 0 .4vw var(--neon-cyan),
+                         .5vw .5vw .1vw var(--dark-bg);
+            animation: neon 1s ease infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title span {
+            animation: blink linear infinite 2s;
+        }
+
+        .hero-title span:nth-of-type(2) {
+            animation: blink linear infinite 3s;
+        }
+
+        .hero-subtitle {
+            font: 400 4vh "Varela Round", sans-serif;
+            color: var(--neon-green);
+            text-shadow: 0 0 1vw var(--neon-green),
+                         0 0 3vw var(--neon-green),
+                         0 0 10vw var(--neon-green),
+                         0 0 10vw var(--neon-green),
+                         0 0 .4vw var(--neon-yellow),
+                         .5vw .5vw .1vw var(--dark-bg);
+            animation: neon 1s ease infinite;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-button {
+            width: 200px;
+            height: 50px;
+            border-radius: 180px;
+            position: relative;
+            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+            cursor: pointer;
+            line-height: 12px;
+            margin: 2rem auto 0;
+            display: block;
+            z-index: 2;
+        }
+
+        .hero-button:before {
+            content: '';
+            z-index: 1;
+            position: absolute;
+            display: block;
+            width: 80%;
+            height: 70%;
+            top: 15%;
+            left: 10%;
+            transition: 0.3s opacity ease-in-out;
+            filter: blur(15px);
+            opacity: 0;
+            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+        }
+
+        .hero-button:hover:before {
+            opacity: 1;
+            transition: 0.3s opacity ease-in-out;
+            filter: blur(25px);
+            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+        }
+
+        .hero-button:after {
+            content: 'Descubre más';
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            color: rgba(235,235,235,1);
+            font-weight: bold;
+            z-index: 5;
+            position: absolute;
+            display: block;
+            border-radius: 180px;
+            width: 92%;
+            height: 80%;
+            top: 10%;
+            left: 4%;
+            background-color: var(--dark-bg);
+        }
+
+        @keyframes flicker {
+            to {
+                mask-position: 50% 50%, 0 50%;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            width: 100%;
+            height: 100%;
+            padding: 3px;
+            position: relative;
+            border-radius: 6px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            font-size: 1.5em;
+            color: var(--neon-green);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: "";
+            width: 104%;
+            height: 102%;
+            border-radius: 8px;
+            background-image: linear-gradient(
+                var(--rotate),
+                var(--neon-green),
+                var(--neon-yellow) 43%,
+                var(--neon-cyan)
+            );
+            position: absolute;
+            z-index: -1;
+            top: -1%;
+            left: -2%;
+            animation: spin 2.5s linear infinite;
+        }
+
+        .card::after {
+            position: absolute;
+            content: "";
+            top: calc(var(--card-height) / 6);
+            left: 0;
+            right: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            transform: scale(0.8);
+            filter: blur(calc(var(--card-height) / 6));
+            background-image: linear-gradient(
+                var(--rotate),
+                var(--neon-green),
+                var(--neon-yellow) 43%,
+                var(--neon-cyan)
+            );
+            opacity: 0.8;
+            animation: spin 2.5s linear infinite;
+        }
+
+        @keyframes blink {
+            78% {
+                color: inherit;
+                text-shadow: inherit;
+            }
+            79% {
+                color: #333;
+            }
+            80% {
+                text-shadow: none;
+            }
+            81% {
+                color: inherit;
+                text-shadow: inherit;
+            }
+            82% {
+                color: #333;
+                text-shadow: none;
+            }
+            83% {
+                color: inherit;
+                text-shadow: inherit;
+            }
+            92% {
+                color: #333;
+                text-shadow: none;
+            }
+            92.5% {
+                color: inherit;
+                text-shadow: inherit;
+            }
+        }
+
+        /* Actualizar también los botones del formulario */
+        button[type="submit"] {
+            width: 200px;
+            height: 50px;
+            border-radius: 180px;
+            position: relative;
+            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+            cursor: pointer;
+            line-height: 12px;
+            margin: 0 auto;
+            display: block;
+            border: none;
+        }
+
+        button[type="submit"]:before {
+            content: '';
+            z-index: 1;
+            position: absolute;
+            display: block;
+            width: 80%;
+            height: 70%;
+            top: 15%;
+            left: 10%;
+            transition: 0.3s opacity ease-in-out;
+            filter: blur(15px);
+            opacity: 0;
+            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+        }
+
+        button[type="submit"]:hover:before {
+            opacity: 1;
+            transition: 0.3s opacity ease-in-out;
+            filter: blur(25px);
+            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+        }
+
+        button[type="submit"]:after {
+            content: 'Enviar mensaje';
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            color: rgba(235,235,235,1);
+            font-weight: bold;
+            z-index: 5;
+            position: absolute;
+            display: block;
+            border-radius: 180px;
+            width: 92%;
+            height: 80%;
+            top: 10%;
+            left: 4%;
+            background-color: var(--dark-bg);
+        }
+
+        .neon-tag {
+            position: relative;
+            border-radius: 8px;
+            background: transparent;
+            width: fit-content;
+            font-family: 'Inter', sans-serif;
+            font-weight: lighter;
+            font-size: 9px;
+            line-height: 1.25rem;
+            display: inline-block;
+            padding: 0px 4px;
+            border: solid 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .neon-tag.blue {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+        }
+
+        .neon-tag.pink {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
+        }
+
+        .neon-tag.green {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
+        }
+
+        .neon-tag.blue:hover {
+            text-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue), 0 0 45px var(--neon-blue);
+        }
+
+        .neon-tag.pink:hover {
+            text-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 45px var(--neon-pink);
+        }
+
+        .neon-tag.green:hover {
+            text-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green), 0 0 45px var(--neon-green);
+        }
+
+        #blogcard {
+            overflow: hidden;
+        }
+
+        /* Flickering animation */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 4px var(--neon-blue),
+                            0 0 11px var(--neon-blue),
+                            0 0 19px var(--neon-blue),
+                            0 0 40px var(--neon-blue),
+                            0 0 80px var(--neon-blue),
+                            0 0 90px var(--neon-blue),
+                            0 0 100px var(--neon-blue),
+                            0 0 150px var(--neon-blue);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        .section-title {
+            font: 400 4vh "Varela Round", sans-serif;
+            color: #85d1ff;
+            text-shadow: 0 0 1vw var(--neon-purple),
+                         0 0 3vw var(--neon-purple),
+                         0 0 10vw var(--neon-purple),
+                         0 0 10vw var(--neon-purple),
+                         0 0 .4vw var(--neon-pink),
+                         .5vw .5vw .1vw var(--dark-bg);
+            animation: neon 1s ease infinite, flicker 1.5s infinite alternate;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        @keyframes neon {
+            0%, 100% {
+                text-shadow: 0 0 1vw var(--neon-purple),
+                            0 0 3vw var(--neon-purple),
+                            0 0 10vw var(--neon-purple),
+                            0 0 10vw var(--neon-purple),
+                            0 0 .4vw var(--neon-pink),
+                            .5vw .5vw .1vw var(--dark-bg);
+            }
+            50% {
+                text-shadow: 0 0 .5vw var(--neon-purple),
+                            0 0 1.5vw var(--neon-purple),
+                            0 0 5vw var(--neon-purple),
+                            0 0 5vw var(--neon-purple),
+                            0 0 .2vw var(--neon-pink),
+                            .5vw .5vw .1vw var(--dark-bg);
+            }
+        }
+
+        .blog-title {
+            font: 400 2.5vh "Varela Round", sans-serif;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 1vw var(--neon-cyan),
+                         0 0 3vw var(--neon-cyan),
+                         0 0 10vw var(--neon-cyan),
+                         0 0 10vw var(--neon-cyan),
+                         0 0 .4vw var(--neon-blue),
+                         .5vw .5vw .1vw var(--dark-bg);
+            animation: neon 1s ease infinite, flicker 1.5s infinite alternate;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card h3 {
+            font: 400 2vh "Varela Round", sans-serif;
+            color: var(--neon-blue);
+            text-shadow: 0 0 1vw var(--neon-blue),
+                         0 0 3vw var(--neon-blue),
+                         0 0 10vw var(--neon-blue),
+                         0 0 10vw var(--neon-blue),
+                         0 0 .4vw var(--neon-cyan),
+                         .5vw .5vw .1vw var(--dark-bg);
+            animation: neon 1s ease infinite, flicker 1.5s infinite alternate;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--neon-green),
+                       0 0 40px var(--neon-green),
+                       0 0 60px var(--neon-green);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-button i {
+            font-size: 35px;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--neon-green),
+                       0 0 60px var(--neon-green),
+                       0 0 90px var(--neon-green);
+        }
+
+        .whatsapp-button {
+            animation: pulse 2s infinite;
+        }
+
+        #hero {
+            display: none;
+        }
+
+        #hero canvas {
+            display: block;
+            position: fixed;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        main {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Estilos para los campos del formulario */
+        .gradient-border {
+            position: relative;
+            width: 100%;
+            padding: 0.8rem;
+            background: #1D1F20;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            --borderWidth: 3px;
+        }
+
+        .gradient-border:after {
+            content: '';
+            position: absolute;
+            top: calc(-1 * var(--borderWidth));
+            left: calc(-1 * var(--borderWidth));
+            height: calc(100% + var(--borderWidth) * 2);
+            width: calc(100% + var(--borderWidth) * 2);
+            background: linear-gradient(60deg, 
+                var(--neon-blue),
+                var(--neon-cyan),
+                var(--neon-green),
+                var(--neon-yellow),
+                var(--neon-pink),
+                var(--neon-purple),
+                var(--neon-blue),
+                var(--neon-cyan)
+            );
+            border-radius: calc(2 * var(--borderWidth));
+            z-index: -1;
+            animation: animatedgradient 3s ease alternate infinite;
+            background-size: 300% 300%;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-border:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .gradient-border::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-cyan);
+            font-weight: 500;
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+
+        @keyframes animatedgradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Asegurar que el formulario tenga el espacio correcto */
+        #contacto form {
+            background: rgba(17, 17, 34, 0.5);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Ajustar el textarea */
+        textarea.gradient-border {
+            min-height: 120px;
+            resize: vertical;
+        }
+    </style>
 </head>
-<body>
-    <h1>Hola KeepToken</h1>
+<body class="bg-gray-900 text-white">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold neon-text">KeepToken</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-neon-blue transition-colors">Inicio</a>
+                    <a href="#caracteristicas" class="hover:text-neon-blue transition-colors">Características</a>
+                    <a href="#gobernanza" class="hover:text-neon-blue transition-colors">Gobernanza</a>
+                    <a href="#blog" class="hover:text-neon-blue transition-colors">Blog</a>
+                    <a href="#contacto" class="hover:text-neon-blue transition-colors">Contacto</a>
+                </div>
+                <button class="md:hidden text-2xl">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative z-10">
+        <section id="inicio" class="hero-container">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span>K</span>eep<span>T</span>oken
+                </h1>
+                <p class="hero-subtitle">La nueva era de los tokens está aquí</p>
+                <a href="#caracteristicas" class="hero-button">
+                    Descubre más
+                </a>
+            </div>
+        </section>
+
+        <div id="hero" class="min-h-screen flex items-center justify-center relative">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-content container mx-auto px-4">
+                <h1 class="hero-title mb-8">KeepToken</h1>
+                <p class="hero-subtitle mb-12">La criptomoneda de ahorro pensada para la gente común</p>
+                <a href="#caracteristicas" class="hero-button neon-border">
+                    Comenzar
+                </a>
+            </div>
+        </div>
+
+        <section id="caracteristicas" class="min-h-screen py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-12 text-center neon-text section-title">Características</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Característica 1: Valor Estable -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-dollar-circle text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Valor Estable</h3>
+                        </div>
+                        <p class="text-gray-300">Cada token KTK está respaldado 1:1 por USDT, garantizando estabilidad y confianza. No hay emisión descontrolada: los tokens se acuñan al comprarse y se queman al venderse.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag blue">Estabilidad</span>
+                            <span class="neon-tag green">Seguridad</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 2: Comisiones Ultra Bajas -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-transfer-alt text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Comisiones Ultra Bajas</h3>
+                        </div>
+                        <p class="text-gray-300">La comisión inicial es del 0.49% por operación, ajustable por la comunidad validada, y siempre con un tope del 1%. Transacciones instantáneas y económicas.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag blue">Económico</span>
+                            <span class="neon-tag pink">Rápido</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 3: Tu Colchón Digital -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-wallet text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Tu Colchón Digital</h3>
+                        </div>
+                        <p class="text-gray-300">KTK es una caja de ahorro en tu bolsillo. No necesitás banco. No necesitás permiso. Lo usás como quieras: para guardar, enviar, cobrar o gastar.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag green">Accesible</span>
+                            <span class="neon-tag blue">Flexible</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 4: Seguridad Blockchain -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-lock-alt text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Seguridad Blockchain</h3>
+                        </div>
+                        <p class="text-gray-300">Construido sobre la red Polygon, con contratos inteligentes auditados y múltiples capas de verificación para garantizar la seguridad de tus tokens.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag green">Auditado</span>
+                            <span class="neon-tag blue">Seguro</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 5: Escalabilidad -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-line-chart text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Escalabilidad</h3>
+                        </div>
+                        <p class="text-gray-300">Diseñado para manejar millones de transacciones diarias sin comprometer la seguridad. Arquitectura optimizada para el crecimiento.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag pink">Rendimiento</span>
+                            <span class="neon-tag blue">Crecimiento</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 6: Interoperabilidad -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-network-chart text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Interoperabilidad</h3>
+                        </div>
+                        <p class="text-gray-300">Integración con múltiples plataformas y servicios. Compatible con wallets populares y exchanges principales. Fácil acceso y uso.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag green">Integración</span>
+                            <span class="neon-tag blue">Accesibilidad</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 7: Transparencia -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-show-alt text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Transparencia Total</h3>
+                        </div>
+                        <p class="text-gray-300">Todas las transacciones son públicas y verificables en la blockchain. Auditorías regulares y reportes transparentes de reservas.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag pink">Verificable</span>
+                            <span class="neon-tag blue">Auditable</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 8: Educación -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-book-open text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Educación Financiera</h3>
+                        </div>
+                        <p class="text-gray-300">Recursos educativos y herramientas para aprender sobre finanzas descentralizadas. Comunidad activa de apoyo y aprendizaje.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag green">Aprendizaje</span>
+                            <span class="neon-tag blue">Comunidad</span>
+                        </div>
+                    </div>
+
+                    <!-- Característica 9: Sostenibilidad -->
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <div class="flex items-center mb-4">
+                            <i class='bx bx-leaf text-3xl mr-3 neon-text'></i>
+                            <h3 class="text-xl font-bold neon-text">Sostenibilidad</h3>
+                        </div>
+                        <p class="text-gray-300">Operamos en Polygon, una red eficiente energéticamente. Comprometidos con el desarrollo sostenible y responsable.</p>
+                        <div class="mt-4">
+                            <span class="neon-tag green">Eficiente</span>
+                            <span class="neon-tag blue">Responsable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gobernanza" class="min-h-screen py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-4 text-center neon-text section-title">Gobernanza Democrática</h2>
+                <p class="text-xl text-gray-300 mb-12 text-center max-w-3xl mx-auto">
+                    Un sistema de gobernanza diseñado para dar voz a la comunidad y asegurar decisiones transparentes y justas.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Las características de gobernanza se cargarán dinámicamente -->
+                </div>
+
+                <div class="requirements max-w-2xl mx-auto">
+                    <!-- Los requisitos se cargarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="min-h-screen py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-12 text-center neon-text section-title">Blog</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Posts se cargarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="min-h-screen py-20 px-4 bg-gray-800">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-12 text-center neon-text section-title">Contacto</h2>
+                <div class="max-w-2xl mx-auto">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="neon-border" placeholder="Tu nombre">
+                        </div>
+                        <div>
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="neon-border" placeholder="tu@email.com">
+                        </div>
+                        <div>
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="neon-border" rows="4" placeholder="Tu mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-3 bg-neon-blue text-gray-900 rounded-lg font-bold hover:bg-neon-purple transition-colors">
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 py-12 px-4">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2024 KeepToken. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/TUNUMERO" target="_blank" class="whatsapp-button">
+        <i class='bx bxl-whatsapp'></i>
+    </a>
+
+    <script src="/app.js"></script>
 </body>
-</html>
+</html> 
