@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Función para cargar datos JSON
 async function loadData() {
     try {
-        const response = await fetch('/db/data.json');
+        const response = await fetch('db/data.json');
         if (!response.ok) {
             throw new Error('Error al cargar los datos');
         }
