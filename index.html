@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/ https://unpkg.com/commentbox.io/dist/commentBox.min.js;
-    style-src 'self' https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/;
-    img-src 'self' https://picsum.photos data:;
-    connect-src 'self';
-    font-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/ https://unpkg.com/commentbox.io/dist/commentBox.min.js https://cdn.jsdelivr.net/npm/flowbite@2.3.0/;
+  style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/ https://cdn.jsdelivr.net/npm/flowbite@2.3.0/ https://fonts.googleapis.com https://cdn.tailwindcss.com;
+  img-src 'self' https://picsum.photos https://cdn.jsdelivr.net data: blob:;
+  font-src 'self' https://cdn.jsdelivr.net/npm/boxicons@2.1.4/fonts/ https://fonts.gstatic.com;
+  connect-src 'self' https://www.google-analytics.com;
+  script-src-elem 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.tailwindcss.com blob:;
+">
     <meta name="description" content="KeepToken (KTK): La criptomoneda estable diseñada para proteger tus ahorros. Respaldada 1:1 por USDT, con comisiones ultra bajas y máxima seguridad blockchain.">
     <title>KeepToken (KTK) - Tu Colchón Digital Seguro</title>
     
@@ -457,6 +459,45 @@
                                 <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Democracia</span>
                                 <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Validación</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva sección de Categorías y Tags -->
+        <section id="categorias-tags" class="py-12 px-4 bg-gray-800">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 neon-text">Categorías</h3>
+                        <div class="space-y-2">
+                            <a href="category.html?id=1" class="block px-4 py-2 bg-gray-900 rounded-lg hover:bg-gray-700 transition-colors neon-text">
+                                <i class='bx bx-bitcoin mr-2'></i>Criptomonedas
+                            </a>
+                            <a href="category.html?id=2" class="block px-4 py-2 bg-gray-900 rounded-lg hover:bg-gray-700 transition-colors neon-text">
+                                <i class='bx bx-network-chart mr-2'></i>Blockchain
+                            </a>
+                            <a href="category.html?id=3" class="block px-4 py-2 bg-gray-900 rounded-lg hover:bg-gray-700 transition-colors neon-text">
+                                <i class='bx bx-dollar-circle mr-2'></i>Finanzas Descentralizadas
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 neon-text">Tags</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="tag.html?id=1" class="px-3 py-1 bg-gray-900 rounded-full text-sm hover:bg-gray-700 transition-colors neon-text">
+                                Estable
+                            </a>
+                            <a href="tag.html?id=2" class="px-3 py-1 bg-gray-900 rounded-full text-sm hover:bg-gray-700 transition-colors neon-text">
+                                Seguridad
+                            </a>
+                            <a href="tag.html?id=3" class="px-3 py-1 bg-gray-900 rounded-full text-sm hover:bg-gray-700 transition-colors neon-text">
+                                Innovación
+                            </a>
+                            <a href="tag.html?id=4" class="px-3 py-1 bg-gray-900 rounded-full text-sm hover:bg-gray-700 transition-colors neon-text">
+                                Democracia
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,9 @@
-// Registrar el plugin ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
+// Verificar si GSAP está disponible antes de registrar el plugin
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+} else {
+    console.warn('GSAP no está disponible. Las animaciones podrían no funcionar.');
+}
 
 // Función para cargar datos JSON
 async function loadData() {
@@ -193,4 +197,198 @@ async function init() {
 }
 
 // Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', init); 
+document.addEventListener('DOMContentLoaded', init);
+
+// Base de datos de blogs, categorías y tags
+const blogData = {
+    categories: {
+        1: {
+            id: 1,
+            name: "Criptomonedas",
+            description: "Información y análisis sobre el mundo de las criptomonedas",
+            icon: "bx-coin-stack"
+        },
+        2: {
+            id: 2,
+            name: "Blockchain",
+            description: "Tecnología blockchain y sus aplicaciones revolucionarias",
+            icon: "bx-network-chart"
+        },
+        3: {
+            id: 3,
+            name: "Finanzas Descentralizadas",
+            description: "Explorando el futuro de las finanzas digitales",
+            icon: "bx-dollar-circle"
+        }
+    },
+    tags: {
+        1: {
+            id: 1,
+            name: "Estable",
+            color: "blue"
+        },
+        2: {
+            id: 2,
+            name: "Seguridad",
+            color: "green"
+        },
+        3: {
+            id: 3,
+            name: "Innovación",
+            color: "purple"
+        },
+        4: {
+            id: 4,
+            name: "Democracia",
+            color: "cyan"
+        }
+    },
+    posts: {
+        1: {
+            title: "¿Qué es KeepToken?",
+            content: `...`, // contenido existente
+            imageUrl: "https://picsum.photos/800/400?random=1",
+            categoryId: 1,
+            tags: [1, 2]
+        },
+        // ... otros posts con categoryId y tags
+    }
+};
+
+// Función para cargar categorías
+function loadCategories() {
+    const categoriesContainer = document.querySelector('#categories-container');
+    if (!categoriesContainer) return;
+
+    categoriesContainer.innerHTML = Object.values(blogData.categories).map(category => `
+        <a href="category.html?id=${category.id}" class="block bg-gray-800 rounded-lg p-6 neon-border hover:bg-gray-700 transition-colors">
+            <div class="flex items-center mb-4">
+                <i class='bx ${category.icon} text-3xl mr-3 neon-text'></i>
+                <h3 class="text-xl font-bold neon-text">${category.name}</h3>
+            </div>
+            <p class="text-gray-300">${category.description}</p>
+        </a>
+    `).join('');
+}
+
+// Función para cargar tags
+function loadTags() {
+    const tagsContainer = document.querySelector('#tags-container');
+    if (!tagsContainer) return;
+
+    tagsContainer.innerHTML = Object.values(blogData.tags).map(tag => `
+        <a href="tag.html?id=${tag.id}" class="inline-block px-3 py-1 m-1 rounded-full 
+            text-sm font-medium 
+            bg-gray-800 
+            hover:bg-neon-${tag.color} 
+            hover:text-gray-900 
+            transition-colors 
+            neon-text">
+            ${tag.name}
+        </a>
+    `).join('');
+}
+
+// Función para cargar posts de una categoría específica
+function loadCategoryPosts(categoryId) {
+    const postsContainer = document.querySelector('#category-posts');
+    if (!postsContainer) return;
+
+    const categoryPosts = Object.values(blogData.posts)
+        .filter(post => post.categoryId === parseInt(categoryId));
+
+    if (categoryPosts.length === 0) {
+        postsContainer.innerHTML = `
+            <div class="text-center text-gray-400">
+                No hay posts en esta categoría.
+            </div>
+        `;
+        return;
+    }
+
+    postsContainer.innerHTML = categoryPosts.map(post => `
+        <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+            <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <a href="blog.html?id=${Object.keys(blogData.posts).find(key => blogData.posts[key] === post)}" class="block">
+                    <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">${post.title}</h3>
+                </a>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${post.tags.map(tagId => {
+                        const tag = blogData.tags[tagId];
+                        return tag ? `
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">
+                                ${tag.name}
+                            </span>
+                        ` : '';
+                    }).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Función para cargar posts de un tag específico
+function loadTagPosts(tagId) {
+    const postsContainer = document.querySelector('#tag-posts');
+    if (!postsContainer) return;
+
+    const tagPosts = Object.values(blogData.posts)
+        .filter(post => post.tags.includes(parseInt(tagId)));
+
+    if (tagPosts.length === 0) {
+        postsContainer.innerHTML = `
+            <div class="text-center text-gray-400">
+                No hay posts con este tag.
+            </div>
+        `;
+        return;
+    }
+
+    postsContainer.innerHTML = tagPosts.map(post => `
+        <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+            <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <a href="blog.html?id=${Object.keys(blogData.posts).find(key => blogData.posts[key] === post)}" class="block">
+                    <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">${post.title}</h3>
+                </a>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${post.tags.map(tagId => {
+                        const tag = blogData.tags[tagId];
+                        return tag ? `
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">
+                                ${tag.name}
+                            </span>
+                        ` : '';
+                    }).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Inicialización de funciones según la página
+document.addEventListener('DOMContentLoaded', () => {
+    // Cargar categorías en la página de categorías
+    if (document.querySelector('#categories-container')) {
+        loadCategories();
+    }
+
+    // Cargar tags en la página de tags
+    if (document.querySelector('#tags-container')) {
+        loadTags();
+    }
+
+    // Cargar posts de categoría
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryId = urlParams.get('id');
+    if (document.querySelector('#category-posts') && categoryId) {
+        loadCategoryPosts(categoryId);
+    }
+
+    // Cargar posts de tag
+    const tagId = urlParams.get('id');
+    if (document.querySelector('#tag-posts') && tagId) {
+        loadTagPosts(tagId);
+    }
+}); 
