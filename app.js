@@ -8,8 +8,7 @@ async function loadData() {
         if (!response.ok) {
             throw new Error('Error al cargar los datos');
         }
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         console.error('Error:', error);
         return null;
@@ -62,7 +61,9 @@ async function loadBlogPosts() {
         <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
             <img src="${post.image_url}" alt="${post.title}" class="w-full h-48 object-cover">
             <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 neon-text">${post.title}</h3>
+                <a href="blog.html?id=${post.id}" class="block">
+                    <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">${post.title}</h3>
+                </a>
                 <p class="text-gray-300 mb-4">${post.content}</p>
                 <div class="flex flex-wrap gap-2">
                     ${post.tags.map(tagId => {
@@ -127,8 +128,23 @@ async function loadGovernance() {
 // Función para inicializar las animaciones
 function initAnimations() {
     // Animación del hero
+    const heroSection = document.querySelector('#inicio');
     const heroContent = document.querySelector('.hero-content');
+    
+    // Eliminar estilos inline que puedan afectar la visibilidad y posición
+    if (heroSection) {
+        console.log('Eliminando estilos inline de heroSection');
+        heroSection.removeAttribute('style');
+        heroSection.style.opacity = '1';
+        heroSection.style.transform = 'none';
+    }
+    
     if (heroContent) {
+        console.log('Eliminando estilos inline de heroContent');
+        heroContent.removeAttribute('style');
+        heroContent.style.opacity = '1';
+        heroContent.style.transform = 'none';
+        
         gsap.from(heroContent, {
             duration: 1.5,
             y: 50,
@@ -139,7 +155,13 @@ function initAnimations() {
 
     // Animación de las secciones al hacer scroll
     const sections = document.querySelectorAll('section');
+    console.log(`Encontradas ${sections.length} secciones para animación`);
     sections.forEach(section => {
+        // Eliminar estilos inline
+        section.removeAttribute('style');
+        section.style.opacity = '1';
+        section.style.transform = 'none';
+
         gsap.from(section, {
             scrollTrigger: {
                 trigger: section,

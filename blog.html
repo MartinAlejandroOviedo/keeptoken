@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeepToken Blog</title>
+    
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f3ff',
+                        'neon-cyan': '#00ffcc',
+                        'neon-purple': '#bc13fe',
+                        'neon-pink': '#ff2d95',
+                        'neon-green': '#39ff14',
+                        'neon-yellow': '#f7ff00',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Boxicons -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <style>
+        .neon-text {
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+        }
+        .neon-border {
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold neon-text">KeepToken</a>
+                <div class="flex space-x-8">
+                    <a href="index.html#inicio" class="hover:text-neon-blue transition-colors">Inicio</a>
+                    <a href="index.html#blog" class="hover:text-neon-blue transition-colors">Blog</a>
+                    <a href="index.html#contacto" class="hover:text-neon-blue transition-colors">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <div id="blog-post" class="max-w-3xl mx-auto">
+            <div id="blog-content" class="bg-gray-800 rounded-lg p-8 neon-border">
+                <div id="blog-loading" class="text-center text-xl neon-text">
+                    Cargando artículo...
+                </div>
+                <div id="blog-error" class="hidden text-center text-xl text-red-500">
+                    Lo sentimos, el artículo que buscas no existe.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de comentarios -->
+        <section id="comments" class="mt-12">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <h2 class="text-2xl font-bold mb-6 text-center neon-text">Comentarios</h2>
+                <div class="commentbox"></div>
+            </div>
+        </section>
+
+        <section id="related-posts" class="mt-12">
+            <h2 class="text-2xl font-bold mb-6 text-center neon-text">Artículos Relacionados</h2>
+            <div id="related-posts-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Artículos relacionados se cargarán dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 py-12 px-4">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2024 KeepToken. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Base de datos de blogs (simular una base de datos)
+        const blogPosts = {
+            1: {
+                title: "¿Qué es KeepToken?",
+                content: `
+                    <p class="mb-4">KeepToken (KTK) es una criptomoneda estable revolucionaria diseñada para proteger y optimizar tus ahorros digitales. Respaldada 1:1 por USDT, nuestra moneda ofrece una solución segura y accesible para trabajadores, emprendedores y comercios.</p>
+                    
+                    <h3 class="text-xl font-bold mb-2 neon-text">Características Principales</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Respaldo 1:1 con USDT</li>
+                        <li>Comisiones ultra bajas (0.49%)</li>
+                        <li>Construida sobre la red Polygon</li>
+                        <li>Máxima seguridad blockchain</li>
+                    </ul>
+                    
+                    <p>Nuestra misión es democratizar el ahorro digital, proporcionando una herramienta financiera transparente, eficiente y al alcance de todos.</p>
+                `,
+                imageUrl: "https://picsum.photos/800/400?random=1",
+                tags: ["Criptomoneda", "Estable"]
+            },
+            2: {
+                title: "Gobernanza Democrática con Validación Humana",
+                content: `
+                    <p class="mb-4">En KeepToken, creemos en un modelo de gobernanza verdaderamente democrático y transparente. Nuestro sistema de participación está diseñado para dar voz real a nuestra comunidad.</p>
+                    
+                    <h3 class="text-xl font-bold mb-2 neon-text">Requisitos de Participación</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Mínimo de 100 KTK</li>
+                        <li>Verificación de identidad humana</li>
+                        <li>Gobernanza habilitada con 1.000.000 de ahorristas</li>
+                        <li>Votaciones transparentes y auditables</li>
+                    </ul>
+                    
+                    <p>Nuestro objetivo es crear un ecosistema donde cada miembro tenga un impacto real en el desarrollo de la plataforma.</p>
+                `,
+                imageUrl: "https://picsum.photos/800/400?random=2",
+                tags: ["Democracia", "Validación"]
+            },
+            3: {
+                title: "Seguridad en la Blockchain",
+                content: `
+                    <p class="mb-4">La seguridad es el pilar fundamental de KeepToken. Hemos implementado múltiples capas de protección para garantizar la integridad de tus activos digitales.</p>
+                    
+                    <h3 class="text-xl font-bold mb-2 neon-text">Tecnologías de Seguridad</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Contratos inteligentes auditados</li>
+                        <li>Múltiples capas de verificación</li>
+                        <li>Infraestructura blockchain de última generación</li>
+                        <li>Protocolos de encriptación avanzados</li>
+                    </ul>
+                    
+                    <p>Protegemos tus tokens con la más avanzada tecnología blockchain, brindándote tranquilidad y confianza.</p>
+                `,
+                imageUrl: "https://picsum.photos/800/400?random=3",
+                tags: ["Criptomoneda", "Validación"]
+            },
+            4: {
+                title: "Escalabilidad y Rendimiento",
+                content: `
+                    <p class="mb-4">KeepToken está diseñada para crecer contigo. Nuestra arquitectura de red permite manejar millones de transacciones sin comprometer la seguridad o la velocidad.</p>
+                    
+                    <h3 class="text-xl font-bold mb-2 neon-text">Rendimiento de Clase Mundial</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Transacciones instantáneas</li>
+                        <li>Comisiones ultra bajas</li>
+                        <li>Red Polygon de alta eficiencia</li>
+                        <li>Escalabilidad sin precedentes</li>
+                    </ul>
+                    
+                    <p>Estamos preparados para el futuro de las finanzas descentralizadas.</p>
+                `,
+                imageUrl: "https://picsum.photos/800/400?random=4",
+                tags: ["Estable", "Democracia"]
+            },
+            5: {
+                title: "El Futuro del Ahorro Digital",
+                content: `
+                    <p class="mb-4">KeepToken representa una revolución en el concepto de ahorro digital, combinando la estabilidad tradicional con la innovación blockchain.</p>
+                    
+                    <h3 class="text-xl font-bold mb-2 neon-text">Visión Innovadora</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Respaldo 1:1 con USDT</li>
+                        <li>Accesible para todos</li>
+                        <li>Sin barreras geográficas</li>
+                        <li>Tecnología de vanguardia</li>
+                    </ul>
+                    
+                    <p>Transformamos la forma en que las personas entienden y manejan sus ahorros.</p>
+                `,
+                imageUrl: "https://picsum.photos/800/400?random=5",
+                tags: ["Criptomoneda", "Estable"]
+            },
+            6: {
+                title: "Comunidad y Desarrollo",
+                content: `
+                    <p class="mb-4">En KeepToken, nuestra comunidad es el corazón de todo lo que hacemos. Creemos en el poder colectivo y la participación activa.</p>
+                    
+                    <h3 class="text-xl font-bold mb-2 neon-text">Participación Comunitaria</h3>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Gobernanza democrática</li>
+                        <li>Desarrollo transparente</li>
+                        <li>Recursos educativos</li>
+                        <li>Apoyo continuo</li>
+                    </ul>
+                    
+                    <p>Juntos construimos el futuro de KeepToken.</p>
+                `,
+                imageUrl: "https://picsum.photos/800/400?random=6",
+                tags: ["Democracia", "Validación"]
+            }
+        };
+
+        function loadBlogPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            
+            const blogLoading = document.getElementById('blog-loading');
+            const blogError = document.getElementById('blog-error');
+            const blogContent = document.getElementById('blog-content');
+            const relatedPostsContainer = document.getElementById('related-posts-container');
+
+            // Limpiar contenido previo
+            blogContent.innerHTML = '';
+            relatedPostsContainer.innerHTML = '';
+
+            if (!postId || !blogPosts[postId]) {
+                blogLoading.classList.add('hidden');
+                blogError.classList.remove('hidden');
+                return;
+            }
+
+            const post = blogPosts[postId];
+
+            // Cargar contenido del blog
+            blogContent.innerHTML = `
+                <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-64 object-cover rounded-lg mb-6">
+                <h1 class="text-3xl font-bold mb-4 neon-text">${post.title}</h1>
+                ${post.content}
+                <div class="mt-6 flex flex-wrap gap-2">
+                    ${post.tags.map(tag => `
+                        <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">${tag}</span>
+                    `).join('')}
+                </div>
+            `;
+
+            // Cargar artículos relacionados
+            const relatedPosts = Object.values(blogPosts)
+                .filter(p => p.title !== post.title)
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 3);
+
+            relatedPosts.forEach(relatedPost => {
+                const relatedPostElement = document.createElement('div');
+                relatedPostElement.classList.add('bg-gray-800', 'rounded-lg', 'overflow-hidden', 'neon-border');
+                relatedPostElement.innerHTML = `
+                    <img src="${relatedPost.imageUrl}" alt="${relatedPost.title}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <a href="blog.html?id=${Object.keys(blogPosts).find(key => blogPosts[key] === relatedPost)}" class="block">
+                            <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">${relatedPost.title}</h3>
+                        </a>
+                        <div class="flex flex-wrap gap-2">
+                            ${relatedPost.tags.map(tag => `
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                relatedPostsContainer.appendChild(relatedPostElement);
+            });
+
+            blogLoading.classList.add('hidden');
+        }
+
+        // Cargar el post cuando se carga la página
+        document.addEventListener('DOMContentLoaded', loadBlogPost);
+
+        // Función para inicializar los comentarios con el ID del blog
+        function initComments() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            
+            if (postId) {
+                // Usar el ID del blog como identificador único para los comentarios
+                commentBox('my-project-id', {
+                    defaultBoxId: `blog-post-${postId}`,
+                    backgroundColor: '#1f2937', // Color de fondo similar al tema
+                    textColor: '#ffffff', // Texto blanco
+                    subtextColor: '#9ca3af' // Color de texto secundario
+                });
+            }
+        }
+
+        // Llamar a la función de inicialización de comentarios después de cargar el post
+        document.addEventListener('DOMContentLoaded', () => {
+            // Esperar a que se cargue el post antes de inicializar los comentarios
+            setTimeout(initComments, 500);
+        });
+    </script>
+</body>
+</html> 

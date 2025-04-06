@@ -4,26 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT, diseñada para proteger el ahorro de las personas trabajadoras, emprendedores y comercios.">
-    <title>KeepToken - Guarda tu Futuro</title>
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  img-src 'self' data: https:;
+  font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+  style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://cdn.tailwindcss.com;
+  style-src-elem 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://cdn.tailwindcss.com;
+  script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.tailwindcss.com blob:;
+  script-src-elem 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.tailwindcss.com blob:;
+  connect-src 'self' https://www.google-analytics.com;">
+    <meta name="description" content="KeepToken (KTK): La criptomoneda estable diseñada para proteger tus ahorros. Respaldada 1:1 por USDT, con comisiones ultra bajas y máxima seguridad blockchain.">
+    <title>KeepToken (KTK) - Tu Colchón Digital Seguro</title>
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="KeepToken | La Criptomoneda de Ahorro">
+    <meta property="og:title" content="KeepToken | La Criptomoneda de Ahorro Inteligente">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://keeptoken.com">
-    <meta property="og:image" content="https://keeptoken.com/assets/favicon.svg">
-    <meta property="og:description" content="La criptomoneda de ahorro pensada para la gente común. KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT.">
+    <meta property="og:image" content="https://keeptoken.com/assets/logo.svg">
+    <meta property="og:description" content="Protege tus ahorros con KeepToken. Una criptomoneda estable, segura y diseñada para la gente común.">
     <meta property="og:site_name" content="KeepToken">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="KeepToken | La Criptomoneda de Ahorro">
-    <meta name="twitter:description" content="La criptomoneda de ahorro pensada para la gente común. KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT.">
-    <meta name="twitter:image" content="https://keeptoken.com/assets/favicon.svg">
+    <meta name="twitter:title" content="KeepToken | Ahorro Seguro en Criptomonedas">
+    <meta name="twitter:description" content="Descubre KeepToken: Tu solución de ahorro digital con respaldo 1:1, comisiones bajas y máxima seguridad.">
+    <meta name="twitter:image" content="https://keeptoken.com/assets/logo.svg">
     <meta name="twitter:url" content="https://keeptoken.com">
     
     <!-- Author -->
-    <meta name="author" content="Martin Alejandro Oviedo">
+    <meta name="author" content="Martín Alejandro Oviedo">
+    <!-- Contact Info -->
     <meta name="email" content="contacto@keeptoken.com">
     
     <!-- Styles -->
@@ -34,671 +44,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f3ff',
+                        'neon-cyan': '#00ffcc',
+                        'neon-purple': '#bc13fe',
+                        'neon-pink': '#ff2d95',
+                        'neon-green': '#39ff14',
+                        'neon-yellow': '#f7ff00',
+                    },
+                    backgroundColor: {
+                        'dark-bg': 'rgba(10, 10, 10, 0.8)',
+                    },
+                    animation: {
+                        'pulse': 'pulse 2s infinite',
+                        'neon': 'neon 1s ease infinite',
+                        'flicker': 'flicker 1.5s infinite alternate',
+                    },
+                    keyframes: {
+                        pulse: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.1)' },
+                        },
+                        neon: {
+                            '0%, 100%': { 
+                                textShadow: '0 0 1vw var(--neon-purple), 0 0 3vw var(--neon-purple), 0 0 10vw var(--neon-purple), 0 0 10vw var(--neon-purple), 0 0 .4vw var(--neon-pink), .5vw .5vw .1vw var(--dark-bg)' 
+                            },
+                            '50%': { 
+                                textShadow: '0 0 .5vw var(--neon-purple), 0 0 1.5vw var(--neon-purple), 0 0 5vw var(--neon-purple), 0 0 5vw var(--neon-purple), 0 0 .2vw var(--neon-pink), .5vw .5vw .1vw var(--dark-bg)' 
+                            },
+                        },
+                        flicker: {
+                            '0%, 18%, 22%, 25%, 53%, 57%, 100%': { 
+                                textShadow: '0 0 4px var(--neon-blue), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-blue), 0 0 40px var(--neon-blue), 0 0 80px var(--neon-blue), 0 0 90px var(--neon-blue), 0 0 100px var(--neon-blue), 0 0 150px var(--neon-blue)' 
+                            },
+                            '20%, 24%, 55%': { 
+                                textShadow: 'none' 
+                            },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    
     <!-- Scripts -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" type="text/javascript"></script>
-
-    <style>
-        @property --rotate {
-            syntax: "<angle>";
-            initial-value: 132deg;
-            inherits: false;
-        }
-
-        :root {
-            --card-height: 65vh;
-            --card-width: calc(var(--card-height) / 1.5);
-            --size: 20px;
-            /* Paleta de colores neón */
-            --neon-blue: #00f3ff;
-            --neon-cyan: #00ffcc;
-            --neon-purple: #bc13fe;
-            --neon-pink: #ff2d95;
-            --neon-green: #39ff14;
-            --neon-yellow: #f7ff00;
-            --dark-bg: rgba(10, 10, 10, 0.8);
-            --card-bg: rgba(26, 26, 26, 0.8);
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .text-content {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .text-gray-300 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-        }
-
-        .text-gray-400 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-        }
-
-        .font-bold {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
-
-        .neon-text {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue),
-                         0 0 20px var(--neon-blue),
-                         0 0 30px var(--neon-blue);
-        }
-        
-        .neon-border {
-            position: relative;
-            border-radius: 8px;
-            padding: 20px;
-            background: linear-gradient(0deg, #000, #272727);
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .neon-border::before, .neon-border::after {
-            content: '';
-            position: absolute;
-            left: -2px;
-            top: -2px;
-            background: linear-gradient(45deg, 
-                var(--neon-blue),
-                var(--neon-cyan),
-                var(--neon-green),
-                var(--neon-yellow),
-                var(--neon-pink),
-                var(--neon-purple),
-                var(--neon-blue),
-                var(--neon-cyan),
-                var(--neon-green),
-                var(--neon-yellow)
-            );
-            background-size: 400%;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            z-index: -1;
-            animation: steam 20s linear infinite;
-            border-radius: 8px;
-        }
-
-        .neon-border::after {
-            filter: blur(0px);
-        }
-
-        @keyframes steam {
-            0% {
-                background-position: 0 0;
-            }
-            50% {
-                background-position: 400% 0;
-            }
-            100% {
-                background-position: 0 0;
-            }
-        }
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            background: rgba(17, 17, 34, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            z-index: 1;
-        }
-
-        .hero-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: conic-gradient(
-                from 180deg at 50% 70%,
-                var(--neon-blue) 0deg,
-                var(--neon-cyan) 72deg,
-                var(--neon-green) 144deg,
-                var(--neon-yellow) 216deg,
-                var(--neon-pink) 288deg,
-                var(--neon-purple) 360deg
-            );
-            mask: radial-gradient(circle at 50% 50%, white 2px, transparent 2.5px) 50% 50% / var(--size) var(--size), 
-                  url("https://assets.codepen.io/605876/noise-mask.png") 256px 50% / 256px 256px;
-            mask-composite: intersect;
-            animation: flicker 20s infinite linear;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            width: 65%;
-            height: 250px;
-            user-select: none;
-            background: rgb(47 47 47 / 0%);
-            padding: 2rem;
-            border-radius: 1rem;
-        }
-
-        .hero-title {
-            font: 400 19vh "Varela Round", sans-serif;
-            color: var(--neon-blue);
-            text-shadow: 0 0 1vw var(--neon-blue),
-                         0 0 3vw var(--neon-blue),
-                         0 0 10vw var(--neon-blue),
-                         0 0 10vw var(--neon-blue),
-                         0 0 .4vw var(--neon-cyan),
-                         .5vw .5vw .1vw var(--dark-bg);
-            animation: neon 1s ease infinite;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title span {
-            animation: blink linear infinite 2s;
-        }
-
-        .hero-title span:nth-of-type(2) {
-            animation: blink linear infinite 3s;
-        }
-
-        .hero-subtitle {
-            font: 400 4vh "Varela Round", sans-serif;
-            color: var(--neon-green);
-            text-shadow: 0 0 1vw var(--neon-green),
-                         0 0 3vw var(--neon-green),
-                         0 0 10vw var(--neon-green),
-                         0 0 10vw var(--neon-green),
-                         0 0 .4vw var(--neon-yellow),
-                         .5vw .5vw .1vw var(--dark-bg);
-            animation: neon 1s ease infinite;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-button {
-            width: 200px;
-            height: 50px;
-            border-radius: 180px;
-            position: relative;
-            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-            cursor: pointer;
-            line-height: 12px;
-            margin: 2rem auto 0;
-            display: block;
-            z-index: 2;
-        }
-
-        .hero-button:before {
-            content: '';
-            z-index: 1;
-            position: absolute;
-            display: block;
-            width: 80%;
-            height: 70%;
-            top: 15%;
-            left: 10%;
-            transition: 0.3s opacity ease-in-out;
-            filter: blur(15px);
-            opacity: 0;
-            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-        }
-
-        .hero-button:hover:before {
-            opacity: 1;
-            transition: 0.3s opacity ease-in-out;
-            filter: blur(25px);
-            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-        }
-
-        .hero-button:after {
-            content: 'Descubre más';
-            text-align: center;
-            line-height: 40px;
-            font-size: 18px;
-            color: rgba(235,235,235,1);
-            font-weight: bold;
-            z-index: 5;
-            position: absolute;
-            display: block;
-            border-radius: 180px;
-            width: 92%;
-            height: 80%;
-            top: 10%;
-            left: 4%;
-            background-color: var(--dark-bg);
-        }
-
-        @keyframes flicker {
-            to {
-                mask-position: 50% 50%, 0 50%;
-            }
-        }
-
-        .card {
-            background: var(--card-bg);
-            width: 100%;
-            height: 100%;
-            padding: 3px;
-            position: relative;
-            border-radius: 6px;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            display: flex;
-            font-size: 1.5em;
-            color: var(--neon-green);
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-        }
-
-        .card::before {
-            content: "";
-            width: 104%;
-            height: 102%;
-            border-radius: 8px;
-            background-image: linear-gradient(
-                var(--rotate),
-                var(--neon-green),
-                var(--neon-yellow) 43%,
-                var(--neon-cyan)
-            );
-            position: absolute;
-            z-index: -1;
-            top: -1%;
-            left: -2%;
-            animation: spin 2.5s linear infinite;
-        }
-
-        .card::after {
-            position: absolute;
-            content: "";
-            top: calc(var(--card-height) / 6);
-            left: 0;
-            right: 0;
-            z-index: -1;
-            height: 100%;
-            width: 100%;
-            margin: 0 auto;
-            transform: scale(0.8);
-            filter: blur(calc(var(--card-height) / 6));
-            background-image: linear-gradient(
-                var(--rotate),
-                var(--neon-green),
-                var(--neon-yellow) 43%,
-                var(--neon-cyan)
-            );
-            opacity: 0.8;
-            animation: spin 2.5s linear infinite;
-        }
-
-        @keyframes blink {
-            78% {
-                color: inherit;
-                text-shadow: inherit;
-            }
-            79% {
-                color: #333;
-            }
-            80% {
-                text-shadow: none;
-            }
-            81% {
-                color: inherit;
-                text-shadow: inherit;
-            }
-            82% {
-                color: #333;
-                text-shadow: none;
-            }
-            83% {
-                color: inherit;
-                text-shadow: inherit;
-            }
-            92% {
-                color: #333;
-                text-shadow: none;
-            }
-            92.5% {
-                color: inherit;
-                text-shadow: inherit;
-            }
-        }
-
-        /* Actualizar también los botones del formulario */
-        button[type="submit"] {
-            width: 200px;
-            height: 50px;
-            border-radius: 180px;
-            position: relative;
-            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-            cursor: pointer;
-            line-height: 12px;
-            margin: 0 auto;
-            display: block;
-            border: none;
-        }
-
-        button[type="submit"]:before {
-            content: '';
-            z-index: 1;
-            position: absolute;
-            display: block;
-            width: 80%;
-            height: 70%;
-            top: 15%;
-            left: 10%;
-            transition: 0.3s opacity ease-in-out;
-            filter: blur(15px);
-            opacity: 0;
-            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-        }
-
-        button[type="submit"]:hover:before {
-            opacity: 1;
-            transition: 0.3s opacity ease-in-out;
-            filter: blur(25px);
-            background: linear-gradient(60deg, var(--neon-blue), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-        }
-
-        button[type="submit"]:after {
-            content: 'Enviar mensaje';
-            text-align: center;
-            line-height: 40px;
-            font-size: 18px;
-            color: rgba(235,235,235,1);
-            font-weight: bold;
-            z-index: 5;
-            position: absolute;
-            display: block;
-            border-radius: 180px;
-            width: 92%;
-            height: 80%;
-            top: 10%;
-            left: 4%;
-            background-color: var(--dark-bg);
-        }
-
-        .neon-tag {
-            position: relative;
-            border-radius: 8px;
-            background: transparent;
-            width: fit-content;
-            font-family: 'Inter', sans-serif;
-            font-weight: lighter;
-            font-size: 9px;
-            line-height: 1.25rem;
-            display: inline-block;
-            padding: 0px 4px;
-            border: solid 1px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .neon-tag.blue {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
-        }
-
-        .neon-tag.pink {
-            color: var(--neon-pink);
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
-        }
-
-        .neon-tag.green {
-            color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
-        }
-
-        .neon-tag.blue:hover {
-            text-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue), 0 0 45px var(--neon-blue);
-        }
-
-        .neon-tag.pink:hover {
-            text-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 45px var(--neon-pink);
-        }
-
-        .neon-tag.green:hover {
-            text-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green), 0 0 45px var(--neon-green);
-        }
-
-        #blogcard {
-            overflow: hidden;
-        }
-
-        /* Flickering animation */
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                text-shadow: 0 0 4px var(--neon-blue),
-                            0 0 11px var(--neon-blue),
-                            0 0 19px var(--neon-blue),
-                            0 0 40px var(--neon-blue),
-                            0 0 80px var(--neon-blue),
-                            0 0 90px var(--neon-blue),
-                            0 0 100px var(--neon-blue),
-                            0 0 150px var(--neon-blue);
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-            }
-        }
-
-        .section-title {
-            font: 400 4vh "Varela Round", sans-serif;
-            color: #85d1ff;
-            text-shadow: 0 0 1vw var(--neon-purple),
-                         0 0 3vw var(--neon-purple),
-                         0 0 10vw var(--neon-purple),
-                         0 0 10vw var(--neon-purple),
-                         0 0 .4vw var(--neon-pink),
-                         .5vw .5vw .1vw var(--dark-bg);
-            animation: neon 1s ease infinite, flicker 1.5s infinite alternate;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        @keyframes neon {
-            0%, 100% {
-                text-shadow: 0 0 1vw var(--neon-purple),
-                            0 0 3vw var(--neon-purple),
-                            0 0 10vw var(--neon-purple),
-                            0 0 10vw var(--neon-purple),
-                            0 0 .4vw var(--neon-pink),
-                            .5vw .5vw .1vw var(--dark-bg);
-            }
-            50% {
-                text-shadow: 0 0 .5vw var(--neon-purple),
-                            0 0 1.5vw var(--neon-purple),
-                            0 0 5vw var(--neon-purple),
-                            0 0 5vw var(--neon-purple),
-                            0 0 .2vw var(--neon-pink),
-                            .5vw .5vw .1vw var(--dark-bg);
-            }
-        }
-
-        .blog-title {
-            font: 400 2.5vh "Varela Round", sans-serif;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 1vw var(--neon-cyan),
-                         0 0 3vw var(--neon-cyan),
-                         0 0 10vw var(--neon-cyan),
-                         0 0 10vw var(--neon-cyan),
-                         0 0 .4vw var(--neon-blue),
-                         .5vw .5vw .1vw var(--dark-bg);
-            animation: neon 1s ease infinite, flicker 1.5s infinite alternate;
-            margin-bottom: 1rem;
-        }
-
-        .blog-card h3 {
-            font: 400 2vh "Varela Round", sans-serif;
-            color: var(--neon-blue);
-            text-shadow: 0 0 1vw var(--neon-blue),
-                         0 0 3vw var(--neon-blue),
-                         0 0 10vw var(--neon-blue),
-                         0 0 10vw var(--neon-blue),
-                         0 0 .4vw var(--neon-cyan),
-                         .5vw .5vw .1vw var(--dark-bg);
-            animation: neon 1s ease infinite, flicker 1.5s infinite alternate;
-            margin-bottom: 1rem;
-        }
-
-        .whatsapp-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 0 20px var(--neon-green),
-                       0 0 40px var(--neon-green),
-                       0 0 60px var(--neon-green);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .whatsapp-button i {
-            font-size: 35px;
-            color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green);
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px var(--neon-green),
-                       0 0 60px var(--neon-green),
-                       0 0 90px var(--neon-green);
-        }
-
-        .whatsapp-button {
-            animation: pulse 2s infinite;
-        }
-
-        #hero {
-            display: none;
-        }
-
-        #hero canvas {
-            display: block;
-            position: fixed;
-            z-index: 0;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        main {
-            position: relative;
-            z-index: 3;
-        }
-
-        /* Estilos para los campos del formulario */
-        .gradient-border {
-            position: relative;
-            width: 100%;
-            padding: 0.8rem;
-            background: #1D1F20;
-            border: none;
-            border-radius: 3px;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            --borderWidth: 3px;
-        }
-
-        .gradient-border:after {
-            content: '';
-            position: absolute;
-            top: calc(-1 * var(--borderWidth));
-            left: calc(-1 * var(--borderWidth));
-            height: calc(100% + var(--borderWidth) * 2);
-            width: calc(100% + var(--borderWidth) * 2);
-            background: linear-gradient(60deg, 
-                var(--neon-blue),
-                var(--neon-cyan),
-                var(--neon-green),
-                var(--neon-yellow),
-                var(--neon-pink),
-                var(--neon-purple),
-                var(--neon-blue),
-                var(--neon-cyan)
-            );
-            border-radius: calc(2 * var(--borderWidth));
-            z-index: -1;
-            animation: animatedgradient 3s ease alternate infinite;
-            background-size: 300% 300%;
-            opacity: 1;
-            transition: all 0.3s ease;
-        }
-
-        .gradient-border:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-        }
-
-        .gradient-border::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--neon-cyan);
-            font-weight: 500;
-            text-shadow: 0 0 5px var(--neon-cyan);
-        }
-
-        @keyframes animatedgradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Asegurar que el formulario tenga el espacio correcto */
-        #contacto form {
-            background: rgba(17, 17, 34, 0.5);
-            padding: 2rem;
-            border-radius: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Ajustar el textarea */
-        textarea.gradient-border {
-            min-height: 120px;
-            resize: vertical;
-        }
-    </style>
+    <script src="app.js" type="text/javascript"></script>
 </head>
 <body class="bg-gray-900 text-white">
     <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
@@ -712,37 +112,126 @@
                     <a href="#blog" class="hover:text-neon-blue transition-colors">Blog</a>
                     <a href="#contacto" class="hover:text-neon-blue transition-colors">Contacto</a>
                 </div>
-                <button class="md:hidden text-2xl">
+                
+                <!-- Botón de menú móvil -->
+                <button 
+                    type="button" 
+                    class="md:hidden text-2xl z-50"
+                    data-drawer-target="mobile-drawer"
+                    data-drawer-show="mobile-drawer"
+                    aria-controls="mobile-drawer"
+                >
                     <i class='bx bx-menu'></i>
                 </button>
             </div>
         </nav>
+
+        <!-- Drawer de navegación móvil -->
+        <div 
+            id="mobile-drawer" 
+            class="fixed top-0 left-0 z-40 h-screen w-64 p-6 bg-gray-900 
+                   transform -translate-x-full transition-transform duration-300 ease-in-out 
+                   overflow-y-auto"
+            tabindex="-1"
+            aria-labelledby="mobile-drawer-label"
+        >
+            <div class="flex justify-between items-center mb-6">
+                <h5 id="mobile-drawer-label" class="text-base font-semibold text-gray-400 uppercase">Menú</h5>
+                <button 
+                    type="button" 
+                    data-drawer-hide="mobile-drawer"
+                    aria-controls="mobile-drawer"
+                    class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white 
+                           rounded-lg text-sm w-8 h-8 inline-flex items-center justify-center"
+                >
+                    <i class='bx bx-x text-2xl'></i>
+                </button>
+            </div>
+            
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <a href="#inicio" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                        <i class='bx bx-home mr-3'></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#caracteristicas" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                        <i class='bx bx-star mr-3'></i>
+                        <span>Características</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#gobernanza" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                        <i class='bx bx-group mr-3'></i>
+                        <span>Gobernanza</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#blog" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                        <i class='bx bx-book-content mr-3'></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contacto" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                        <i class='bx bx-envelope mr-3'></i>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </header>
 
     <main class="relative z-10">
-        <section id="inicio" class="hero-container">
-            <div class="hero-background"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span>K</span>eep<span>T</span>oken
-                </h1>
-                <p class="hero-subtitle">La nueva era de los tokens está aquí</p>
-                <a href="#caracteristicas" class="hero-button">
-                    Descubre más
-                </a>
+        <section id="inicio" class="relative isolate overflow-hidden pt-24 min-h-screen flex items-center">
+            <!-- Fondo decorativo -->
+            <div aria-hidden="true" class="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] bg-gradient-to-tr from-neon-purple to-neon-blue opacity-20" 
+                     style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+
+            <!-- Contenido del Hero -->
+            <div class="mx-auto max-w-7xl px-6 py-16 lg:flex lg:items-center lg:gap-12">
+                <div class="lg:w-1/2">
+                    <h1 class="text-4xl font-bold tracking-tight sm:text-6xl neon-text">
+                        <span class="block">KeepToken</span>
+                        <span class="block text-3xl sm:text-4xl text-neon-cyan mt-2">Tu Colchón Digital Seguro</span>
+                    </h1>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">
+                        La criptomoneda estable diseñada para proteger tus ahorros. Respaldada 1:1 por USDT, con comisiones ultra bajas y máxima seguridad blockchain.
+                    </p>
+                    <div class="mt-10 flex items-center gap-x-6">
+                        <a href="#caracteristicas" class="rounded-md bg-neon-blue px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-neon-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon-blue transition-colors">
+                            Comenzar
+                        </a>
+                        <a href="#gobernanza" class="text-sm font-semibold leading-6 text-white hover:text-neon-cyan transition-colors">
+                            Conocer más <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Imagen o logo -->
+                <div class="mt-16 lg:mt-0 lg:w-1/2 flex justify-center items-center">
+                    <img 
+                        src="https://picsum.photos/seed/keeptoken/800/600" 
+                        alt="KeepToken Illustration" 
+                        class="rounded-xl shadow-xl ring-1 ring-white/10 max-w-full h-auto"
+                    >
+                </div>
+            </div>
+
+            <!-- Segundo fondo decorativo -->
+            <div aria-hidden="true" class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] bg-gradient-to-tr from-neon-purple to-neon-blue opacity-20" 
+                     style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
             </div>
         </section>
 
-        <div id="hero" class="min-h-screen flex items-center justify-center relative">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-content container mx-auto px-4">
-                <h1 class="hero-title mb-8">KeepToken</h1>
-                <p class="hero-subtitle mb-12">La criptomoneda de ahorro pensada para la gente común</p>
-                <a href="#caracteristicas" class="hero-button neon-border">
-                    Comenzar
-                </a>
-            </div>
-        </div>
+        <!-- Eliminar la sección de hero anterior -->
+        <div id="hero" class="hidden"></div>
 
         <section id="caracteristicas" class="min-h-screen py-20 px-4">
             <div class="container mx-auto">
@@ -889,32 +378,145 @@
             <div class="container mx-auto">
                 <h2 class="text-4xl font-bold mb-12 text-center neon-text section-title">Blog</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Posts se cargarán dinámicamente -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+                        <img src="https://picsum.photos/800/400?random=1" alt="¿Qué es KeepToken?" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <a href="blog.html?id=1" class="block">
+                                <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">¿Qué es KeepToken?</h3>
+                            </a>
+                            <p class="text-gray-300 mb-4">KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT, diseñada para proteger el ahorro de las personas trabajadoras, emprendedores y comercios. Construida sobre la red Polygon, garantiza operaciones rápidas, económicas y transparentes.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Criptomoneda</span>
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Estable</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+                        <img src="https://picsum.photos/800/400?random=2" alt="Gobernanza Democrática con Validación Humana" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <a href="blog.html?id=2" class="block">
+                                <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">Gobernanza Democrática con Validación Humana</h3>
+                            </a>
+                            <p class="text-gray-300 mb-4">Para participar en las decisiones del sistema, se deben cumplir dos requisitos: tener al menos 100 KTK y estar verificado como persona humana. La gobernanza no se habilita hasta que haya al menos 1.000.000 de ahorristas.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Democracia</span>
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Validación</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+                        <img src="https://picsum.photos/800/400?random=3" alt="Seguridad en la Blockchain" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <a href="blog.html?id=3" class="block">
+                                <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">Seguridad en la Blockchain</h3>
+                            </a>
+                            <p class="text-gray-300 mb-4">KeepToken implementa las últimas tecnologías de seguridad para proteger tus activos digitales. Utilizamos contratos inteligentes auditados y múltiples capas de verificación para garantizar la seguridad de tus tokens.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Criptomoneda</span>
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Validación</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+                        <img src="https://picsum.photos/800/400?random=4" alt="Escalabilidad y Rendimiento" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <a href="blog.html?id=4" class="block">
+                                <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">Escalabilidad y Rendimiento</h3>
+                            </a>
+                            <p class="text-gray-300 mb-4">Construido sobre la red Polygon, KeepToken ofrece transacciones instantáneas y comisiones ultra bajas. Nuestra arquitectura está diseñada para manejar millones de transacciones diarias sin comprometer la seguridad.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Estable</span>
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Democracia</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+                        <img src="https://picsum.photos/800/400?random=5" alt="El Futuro del Ahorro Digital" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <a href="blog.html?id=5" class="block">
+                                <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">El Futuro del Ahorro Digital</h3>
+                            </a>
+                            <p class="text-gray-300 mb-4">KeepToken revoluciona el concepto de ahorro digital, combinando la estabilidad del USDT con la flexibilidad de una criptomoneda. Descubre cómo estamos transformando el futuro del ahorro.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Criptomoneda</span>
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Estable</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg overflow-hidden neon-border">
+                        <img src="https://picsum.photos/800/400?random=6" alt="Comunidad y Desarrollo" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <a href="blog.html?id=6" class="block">
+                                <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">Comunidad y Desarrollo</h3>
+                            </a>
+                            <p class="text-gray-300 mb-4">La comunidad KeepToken es el corazón de nuestro proyecto. Participa en el desarrollo, comparte ideas y ayuda a dar forma al futuro de la plataforma a través de nuestra gobernanza democrática.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Democracia</span>
+                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">Validación</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto" class="min-h-screen py-20 px-4 bg-gray-800">
+        <section id="contacto" class="min-h-screen py-20 px-4">
             <div class="container mx-auto">
                 <h2 class="text-4xl font-bold mb-12 text-center neon-text section-title">Contacto</h2>
-                <div class="max-w-2xl mx-auto">
-                    <form class="space-y-6">
-                        <div>
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="neon-border" placeholder="Tu nombre">
-                        </div>
-                        <div>
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="neon-border" placeholder="tu@email.com">
-                        </div>
-                        <div>
-                            <label for="mensaje" class="form-label">Mensaje</label>
-                            <textarea class="neon-border" rows="4" placeholder="Tu mensaje"></textarea>
-                        </div>
-                        <button type="submit" class="w-full px-8 py-3 bg-neon-blue text-gray-900 rounded-lg font-bold hover:bg-neon-purple transition-colors">
-                            Enviar mensaje
-                        </button>
-                    </form>
+                <div class="w-full max-w-lg mx-auto">
+                    <div class="p-6 bg-gray-800 rounded-lg neon-border">
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-neon-cyan text-sm font-bold mb-2" for="nombre">
+                                    Nombre
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="nombre" 
+                                    placeholder="Tu nombre" 
+                                    class="w-full px-3 py-2 bg-gray-900 text-gray-300 border border-transparent rounded-lg focus:outline-none focus:border-neon-blue transition-colors duration-300"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-neon-cyan text-sm font-bold mb-2" for="email">
+                                    Email
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    placeholder="tu@email.com" 
+                                    class="w-full px-3 py-2 bg-gray-900 text-gray-300 border border-transparent rounded-lg focus:outline-none focus:border-neon-blue transition-colors duration-300"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-neon-cyan text-sm font-bold mb-2" for="mensaje">
+                                    Mensaje
+                                </label>
+                                <textarea 
+                                    id="mensaje" 
+                                    rows="4" 
+                                    placeholder="Tu mensaje" 
+                                    class="w-full px-3 py-2 bg-gray-900 text-gray-300 border border-transparent rounded-lg focus:outline-none focus:border-neon-blue transition-colors duration-300"
+                                ></textarea>
+                            </div>
+                            <div>
+                                <button 
+                                    type="submit" 
+                                    class="w-full px-4 py-2 bg-neon-blue text-gray-900 rounded-lg font-bold hover:bg-neon-purple transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-opacity-50"
+                                >
+                                    Enviar mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <p class="text-center text-gray-500 text-xs mt-4">
+                        &copy; 2024 KeepToken. Todos los derechos reservados.
+                    </p>
                 </div>
             </div>
         </section>
@@ -932,5 +534,8 @@
     </a>
 
     <script src="app.js"></script>
+
+    <!-- Flowbite para drawer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html> 
