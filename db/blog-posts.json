@@ -1,0 +1,16 @@
+{
+    "1": {
+        "title": "¿Qué es KeepToken?",
+        "content": "Contenido del post 1...",
+        "imageUrl": "https://picsum.photos/800/400?random=1",
+        "tags": ["Criptomoneda", "Estable"],
+        "category": "Blockchain"
+    },
+    "2": {
+        "title": "Gobernanza Democrática con Validación Humana",
+        "content": "Contenido del post 2...",
+        "imageUrl": "https://picsum.photos/800/400?random=2",
+        "tags": ["Democracia", "Validación"],
+        "category": "Gobernanza"
+    }
+} 

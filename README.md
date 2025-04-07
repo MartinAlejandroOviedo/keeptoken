@@ -6,7 +6,7 @@ Este es el sitio web oficial de KeepToken, una criptomoneda estable respaldada 1
 
 1. Clona este repositorio:
 ```bash
-git clone https://github.com/MartinAlejandroOviedo/keeptoken.git
+git clone https://github.com/tuusuario/keeptoken.git
 ```
 
 2. Navega al directorio del proyecto:

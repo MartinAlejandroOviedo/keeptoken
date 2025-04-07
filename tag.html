@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/ https://unpkg.com;
+  style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/ https://fonts.googleapis.com https://cdn.tailwindcss.com;
+  img-src 'self' data: blob: https://picsum.photos https://picsum.photos/* https://fastly.picsum.photos https://fastly.picsum.photos/* https://cdn.jsdelivr.net https://images.unsplash.com https://source.unsplash.com https://randomuser.me https://loremflickr.com https://picsum.photos/seed/* *.svg;
+  font-src 'self' https://cdn.jsdelivr.net/npm/boxicons@2.1.4/fonts/ https://fonts.gstatic.com;
+  script-src-elem 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.tailwindcss.com blob:;
+">
+    <title>KeepToken - Posts por Tag</title>
+    
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/img/favicon.svg">
+    
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f3ff',
+                        'neon-cyan': '#00ffcc',
+                        'neon-purple': '#bc13fe',
+                        'neon-pink': '#ff2d95',
+                        'neon-green': '#39ff14',
+                        'neon-yellow': '#f7ff00',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Boxicons -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/img/logoheader.svg" alt="KeepToken Logo" class="h-8 w-auto mr-3">
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-neon-blue transition-colors">Inicio</a>
+                    <a href="#caracteristicas" class="hover:text-neon-blue transition-colors">Características</a>
+                    <a href="#gobernanza" class="hover:text-neon-blue transition-colors">Gobernanza</a>
+                    <a href="blog.html" class="hover:text-neon-blue transition-colors">Blog</a>
+                    <a href="#contacto" class="hover:text-neon-blue transition-colors">Contacto</a>
+                </div>
+                
+                <!-- Botón de menú móvil -->
+                <button 
+                    id="mobile-menu-toggle"
+                    type="button" 
+                    class="md:hidden text-2xl z-50"
+                    data-drawer-target="mobile-drawer"
+                    data-drawer-show="mobile-drawer"
+                    aria-controls="mobile-drawer"
+                >
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <!-- Breadcrumbs -->
+        <nav class="mb-6 grid place-items-center">
+            <ul class="flex items-center text-sm">
+                <li class="inline-flex items-center">
+                    <a href="index.html" class="text-gray-400 hover:text-neon-blue transition-colors flex items-center">
+                        <i class='bx bx-home mr-2'></i>Inicio
+                    </a>
+                    <span class="mx-2 text-gray-600">/</span>
+                </li>
+                <li class="inline-flex items-center">
+                    <a href="index.html#blog" class="text-gray-400 hover:text-neon-blue transition-colors">Blog</a>
+                    <span class="mx-2 text-gray-600">/</span>
+                </li>
+                <li class="inline-flex items-center">
+                    <span id="current-tag" class="text-neon-purple font-semibold"></span>
+                </li>
+            </ul>
+        </nav>
+
+        <section id="tag-posts" class="mb-12">
+            <div class="container mx-auto">
+                <h1 id="tag-title" class="text-3xl font-bold mb-8 text-center neon-text"></h1>
+                <div id="tag-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Los posts se cargarán dinámicamente aquí -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 py-12 px-4">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2024 KeepToken. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Base de datos de blogs (simular una base de datos)
+        const blogPosts = {
+            1: {
+                title: "¿Qué es KeepToken?",
+                content: "KeepToken (KTK) es una criptomoneda estable respaldada 1:1 por USDT, diseñada para proteger el ahorro de las personas trabajadoras, emprendedores y comercios.",
+                imageUrl: "https://picsum.photos/800/400?random=1",
+                tags: ["Criptomoneda", "Estable"],
+                category: "Blockchain"
+            },
+            2: {
+                title: "Gobernanza Democrática con Validación Humana",
+                content: "Para participar en las decisiones del sistema, se deben cumplir dos requisitos: tener al menos 100 KTK y estar verificado como persona humana.",
+                imageUrl: "https://picsum.photos/800/400?random=2",
+                tags: ["Democracia", "Validación"],
+                category: "Gobernanza"
+            },
+            3: {
+                title: "Seguridad en la Blockchain",
+                content: "KeepToken implementa las últimas tecnologías de seguridad para proteger tus activos digitales.",
+                imageUrl: "https://picsum.photos/800/400?random=3",
+                tags: ["Criptomoneda", "Validación"],
+                category: "Seguridad"
+            },
+            4: {
+                title: "Escalabilidad y Rendimiento",
+                content: "Construido sobre la red Polygon, KeepToken ofrece transacciones instantáneas y comisiones ultra bajas.",
+                imageUrl: "https://picsum.photos/800/400?random=4",
+                tags: ["Estable", "Democracia"],
+                category: "Rendimiento"
+            },
+            5: {
+                title: "El Futuro del Ahorro Digital",
+                content: "KeepToken revoluciona el concepto de ahorro digital, combinando la estabilidad del USDT con la flexibilidad de una criptomoneda.",
+                imageUrl: "https://picsum.photos/800/400?random=5",
+                tags: ["Criptomoneda", "Estable"],
+                category: "Innovación"
+            },
+            6: {
+                title: "Comunidad y Desarrollo",
+                content: "La comunidad KeepToken es el corazón de nuestro proyecto. Participa en el desarrollo, comparte ideas y ayuda a dar forma al futuro de la plataforma.",
+                imageUrl: "https://picsum.photos/800/400?random=6",
+                tags: ["Democracia", "Validación"],
+                category: "Comunidad"
+            }
+        };
+
+        // Función para cargar posts por tag
+        function loadTagPosts() {
+            // Obtener el tag de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const tag = urlParams.get('tag');
+
+            // Actualizar título y breadcrumb
+            const tagTitleElement = document.getElementById('tag-title');
+            const currentTagElement = document.getElementById('current-tag');
+            const postsContainer = document.getElementById('tag-posts-container');
+
+            if (!tag) {
+                tagTitleElement.textContent = 'Selecciona un tag';
+                return;
+            }
+
+            tagTitleElement.textContent = `Posts con el tag: ${tag}`;
+            currentTagElement.textContent = tag;
+
+            // Filtrar posts por tag
+            const filteredPosts = Object.entries(blogPosts)
+                .filter(([_, post]) => post.tags.includes(tag))
+                .map(([id, post]) => ({ id, ...post }));
+
+            // Limpiar contenedor
+            postsContainer.innerHTML = '';
+
+            // Mostrar posts filtrados
+            if (filteredPosts.length === 0) {
+                postsContainer.innerHTML = `
+                    <div class="col-span-full text-center text-gray-400">
+                        No hay posts con este tag.
+                    </div>
+                `;
+                return;
+            }
+
+            // Renderizar posts
+            filteredPosts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.classList.add('bg-gray-800', 'rounded-lg', 'overflow-hidden', 'neon-border', 'flex', 'flex-col');
+                
+                postCard.innerHTML = `
+                    <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-48 object-cover">
+                    <div class="p-4 flex-grow flex flex-col">
+                        <div class="mb-2">
+                            <a href="category.html?category=${encodeURIComponent(post.category)}" 
+                               class="px-2 py-1 text-xs bg-neon-purple text-white rounded-full mr-2 hover:bg-neon-blue transition-colors">
+                                ${post.category}
+                            </a>
+                        </div>
+                        <a href="blog.html?id=${post.id}" class="block">
+                            <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">${post.title}</h3>
+                        </a>
+                        <p class="text-gray-400 mb-4 flex-grow">${post.content.replace(/<[^>]*>/g, '').substring(0, 100)}...</p>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            ${post.tags.map(t => `
+                                <a href="tag.html?tag=${encodeURIComponent(t)}" 
+                                   class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text hover:bg-neon-purple hover:text-white transition-colors">
+                                    ${t}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+
+                postsContainer.appendChild(postCard);
+            });
+        }
+
+        // Cargar posts al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar GSAP si está disponible
+            if (window.gsap && window.ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+            } else {
+                console.warn('GSAP no está disponible. Las animaciones podrían no funcionar.');
+            }
+
+            // Cargar posts
+            loadTagPosts();
+        });
+    </script>
+
+    <!-- Head Dinámico -->
+    <script src="assets/js/dynamic-head.js"></script>
+    
+    <!-- Otros scripts -->
+    <script src="assets/js/load-partials.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Overlay para el drawer móvil -->
+    <div 
+        id="mobile-drawer-overlay" 
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"
+    ></div>
+
+    <!-- Drawer de navegación móvil -->
+</body>
+</html> 

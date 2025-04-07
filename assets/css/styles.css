@@ -1,0 +1,84 @@
+/* Estilos neon generales */
+.neon-text {
+    text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+}
+
+.neon-border {
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+/* Estilos de iconos de redes sociales */
+.social-share-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-share-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Estilos de iconos de redes sociales con colores neon */
+.social-share-icon.twitter:hover {
+    color: #1DA1F2;
+}
+
+.social-share-icon.linkedin:hover {
+    color: #0077B5;
+}
+
+.social-share-icon.github:hover {
+    color: #bc13fe;
+}
+
+.social-share-icon.copy:hover {
+    color: #00f3ff;
+}
+
+/* Estilos de fondo oscuro con transparencia */
+.dark-bg {
+    background-color: rgba(10, 10, 10, 0.8);
+}
+
+/* Animaciones de entrada suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.whatsapp-button i {
+    font-size: 32px;
+    color: white;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: #128C7E;
+} 

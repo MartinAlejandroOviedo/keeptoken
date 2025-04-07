@@ -1,0 +1,40 @@
+<footer class="bg-gray-900 py-12 px-4">
+    <div class="container mx-auto text-center">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold neon-text">KeepToken</h3>
+                <p class="text-gray-400 mt-2">Democratizando el ahorro digital</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://twitter.com/keeptoken" target="_blank" class="text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class='bx bxl-twitter text-2xl'></i>
+                </a>
+                <a href="https://linkedin.com/company/keeptoken" target="_blank" class="text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class='bx bxl-linkedin text-2xl'></i>
+                </a>
+                <a href="https://github.com/keeptoken" target="_blank" class="text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class='bx bxl-github text-2xl'></i>
+                </a>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-6">
+            <p class="text-gray-400">&copy; 2024 KeepToken. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Función para cargar dinámicamente el footer
+    function loadFooter() {
+        const footerContainer = document.querySelector('footer');
+        if (footerContainer) {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = footerContainer.querySelector('p');
+            if (copyrightElement) {
+                copyrightElement.textContent = `© ${currentYear} KeepToken. Todos los derechos reservados.`;
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadFooter);
+</script> 

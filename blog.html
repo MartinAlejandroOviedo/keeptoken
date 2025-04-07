@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KeepToken Blog</title>
     
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/img/favicon.svg">
+    
     <!-- Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,48 +30,94 @@
     <!-- Boxicons -->
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     
-    <style>
-        .neon-text {
-            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
-        }
-        .neon-border {
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
-        }
-    </style>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/ https://unpkg.com;
+  style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/ https://fonts.googleapis.com https://cdn.tailwindcss.com;
+  img-src 'self' data: blob: https://picsum.photos https://picsum.photos/* https://fastly.picsum.photos https://fastly.picsum.photos/* https://cdn.jsdelivr.net https://images.unsplash.com https://source.unsplash.com https://randomuser.me https://loremflickr.com https://picsum.photos/seed/* *.svg;
+  font-src 'self' https://cdn.jsdelivr.net/npm/boxicons@2.1.4/fonts/ https://fonts.gstatic.com;
+  script-src-elem 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.tailwindcss.com blob:;
+">
 </head>
 <body class="bg-gray-900 text-white">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold neon-text">KeepToken</a>
-                <div class="flex space-x-8">
-                    <a href="index.html#inicio" class="hover:text-neon-blue transition-colors">Inicio</a>
-                    <a href="index.html#blog" class="hover:text-neon-blue transition-colors">Blog</a>
-                    <a href="index.html#contacto" class="hover:text-neon-blue transition-colors">Contacto</a>
-                </div>
+    <header>
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="assets/img/logoheader.svg" alt="KeepToken Logo" class="h-8 w-auto mr-3">
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-neon-blue transition-colors">Inicio</a>
+                <a href="#caracteristicas" class="hover:text-neon-blue transition-colors">Características</a>
+                <a href="#gobernanza" class="hover:text-neon-blue transition-colors">Gobernanza</a>
+                <a href="blog.html" class="hover:text-neon-blue transition-colors">Blog</a>
+                <a href="#contacto" class="hover:text-neon-blue transition-colors">Contacto</a>
             </div>
-        </nav>
+            
+            <!-- Botón de menú móvil -->
+            <button 
+                id="mobile-menu-toggle"
+                type="button" 
+                class="md:hidden text-2xl z-50"
+                data-drawer-target="mobile-drawer"
+                data-drawer-show="mobile-drawer"
+                aria-controls="mobile-drawer"
+            >
+                <i class='bx bx-menu'></i>
+            </button>
+        </div>
     </header>
-
     <main class="container mx-auto px-4 pt-24 pb-12">
+        <!-- Breadcrumbs -->
+        <nav class="mb-6 grid place-items-center">
+            <ul class="flex items-center text-sm">
+                <li class="inline-flex items-center">
+                    <a href="index.html" class="text-gray-400 hover:text-neon-blue transition-colors flex items-center">
+                        <i class='bx bx-home mr-2'></i>Inicio
+                    </a>
+                    <span class="mx-2 text-gray-600">/</span>
+                </li>
+                <li class="inline-flex items-center">
+                    <a href="index.html#blog" class="text-gray-400 hover:text-neon-blue transition-colors">Blog</a>
+                    <span class="mx-2 text-gray-600">/</span>
+                </li>
+                <li class="inline-flex items-center">
+                    <span id="current-blog-title" class="text-neon-purple font-semibold"></span>
+                </li>
+            </ul>
+        </nav>
+
         <div id="blog-post" class="max-w-3xl mx-auto">
-            <div id="blog-content" class="bg-gray-800 rounded-lg p-8 neon-border">
+            <div id="blog-content" class="bg-gray-800 rounded-lg p-8 neon-border relative">
                 <div id="blog-loading" class="text-center text-xl neon-text">
                     Cargando artículo...
                 </div>
                 <div id="blog-error" class="hidden text-center text-xl text-red-500">
                     Lo sentimos, el artículo que buscas no existe.
                 </div>
+                
+                <!-- Bloque de compartir -->
+                <div id="share-section" class="absolute top-8 right-8 flex space-x-4">
+                    <a href="#" class="social-share-icon text-2xl text-blue-500 hover:text-blue-400" onclick="shareOnSocialMedia('facebook')">
+                        <i class='bx bxl-facebook-square'></i>
+                    </a>
+                    <a href="#" class="social-share-icon text-2xl text-sky-400 hover:text-sky-300" onclick="shareOnSocialMedia('twitter')">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+                    <a href="#" class="social-share-icon text-2xl text-green-500 hover:text-green-400" onclick="shareOnSocialMedia('whatsapp')">
+                        <i class='bx bxl-whatsapp'></i>
+                    </a>
+                    <a href="#" class="social-share-icon text-2xl text-red-500 hover:text-red-400" onclick="shareOnSocialMedia('linkedin')">
+                        <i class='bx bxl-linkedin-square'></i>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- Sección de comentarios -->
-        <section id="comments" class="mt-12">
-            <div class="container mx-auto px-4 max-w-3xl">
-                <h2 class="text-2xl font-bold mb-6 text-center neon-text">Comentarios</h2>
-                <div class="commentbox"></div>
-            </div>
+        <section id="comments" class="hidden">
         </section>
 
         <section id="related-posts" class="mt-12">
@@ -77,16 +126,48 @@
                 <!-- Artículos relacionados se cargarán dinámicamente -->
             </div>
         </section>
-    </main>
 
-    <footer class="bg-gray-900 py-12 px-4">
-        <div class="container mx-auto text-center">
-            <p class="text-gray-400">&copy; 2024 KeepToken. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+        <section id="social-share" class="mt-12">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="bg-gray-800 rounded-lg p-6 neon-border flex flex-col items-center">
+                    <h3 class="text-xl font-bold mb-4 neon-text text-center">Comparte este artículo</h3>
+                    
+                    <div class="flex justify-center space-x-6 mb-4">
+                        <a href="#" onclick="shareOnSocialMedia('facebook')" class="text-3xl text-blue-500 hover:text-blue-400 transition-colors social-share-icon">
+                            <i class='bx bxl-facebook-square'></i>
+                        </a>
+                        <a href="#" onclick="shareOnSocialMedia('twitter')" class="text-3xl text-sky-400 hover:text-sky-300 transition-colors social-share-icon">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        <a href="#" onclick="shareOnSocialMedia('whatsapp')" class="text-3xl text-green-500 hover:text-green-400 transition-colors social-share-icon">
+                            <i class='bx bxl-whatsapp'></i>
+                        </a>
+                        <a href="#" onclick="shareOnSocialMedia('linkedin')" class="text-3xl text-blue-700 hover:text-blue-600 transition-colors social-share-icon">
+                            <i class='bx bxl-linkedin-square'></i>
+                        </a>
+                        <a href="#" onclick="copyBlogLink()" class="text-3xl text-gray-400 hover:text-neon-blue transition-colors social-share-icon">
+                            <i class='bx bx-link'></i>
+                        </a>
+                    </div>
+                    
+                    <div id="link-copied-message" class="text-neon-green text-sm opacity-0 transition-opacity duration-300">
+                        ¡Enlace copiado al portapapeles!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
 
     <script>
-        // Base de datos de blogs (simular una base de datos)
+        // Eliminar funciones de comentarios
+        function loadComments() {}
+        function addComment() {}
+    </script>
+
+    <script>
+        // Eliminar configuración de Supabase
+        // Resto del script de blog permanece igual
         const blogPosts = {
             1: {
                 title: "¿Qué es KeepToken?",
@@ -104,7 +185,8 @@
                     <p>Nuestra misión es democratizar el ahorro digital, proporcionando una herramienta financiera transparente, eficiente y al alcance de todos.</p>
                 `,
                 imageUrl: "https://picsum.photos/800/400?random=1",
-                tags: ["Criptomoneda", "Estable"]
+                tags: ["Criptomoneda", "Estable"],
+                category: "Blockchain"
             },
             2: {
                 title: "Gobernanza Democrática con Validación Humana",
@@ -122,7 +204,8 @@
                     <p>Nuestro objetivo es crear un ecosistema donde cada miembro tenga un impacto real en el desarrollo de la plataforma.</p>
                 `,
                 imageUrl: "https://picsum.photos/800/400?random=2",
-                tags: ["Democracia", "Validación"]
+                tags: ["Democracia", "Validación"],
+                category: "Gobernanza"
             },
             3: {
                 title: "Seguridad en la Blockchain",
@@ -140,7 +223,8 @@
                     <p>Protegemos tus tokens con la más avanzada tecnología blockchain, brindándote tranquilidad y confianza.</p>
                 `,
                 imageUrl: "https://picsum.photos/800/400?random=3",
-                tags: ["Criptomoneda", "Validación"]
+                tags: ["Criptomoneda", "Validación"],
+                category: "Seguridad"
             },
             4: {
                 title: "Escalabilidad y Rendimiento",
@@ -158,7 +242,8 @@
                     <p>Estamos preparados para el futuro de las finanzas descentralizadas.</p>
                 `,
                 imageUrl: "https://picsum.photos/800/400?random=4",
-                tags: ["Estable", "Democracia"]
+                tags: ["Estable", "Democracia"],
+                category: "Rendimiento"
             },
             5: {
                 title: "El Futuro del Ahorro Digital",
@@ -176,7 +261,8 @@
                     <p>Transformamos la forma en que las personas entienden y manejan sus ahorros.</p>
                 `,
                 imageUrl: "https://picsum.photos/800/400?random=5",
-                tags: ["Criptomoneda", "Estable"]
+                tags: ["Criptomoneda", "Estable"],
+                category: "Innovación"
             },
             6: {
                 title: "Comunidad y Desarrollo",
@@ -194,10 +280,12 @@
                     <p>Juntos construimos el futuro de KeepToken.</p>
                 `,
                 imageUrl: "https://picsum.photos/800/400?random=6",
-                tags: ["Democracia", "Validación"]
+                tags: ["Democracia", "Validación"],
+                category: "Comunidad"
             }
         };
 
+        // Resto de las funciones de blog permanecen igual
         function loadBlogPost() {
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
@@ -219,36 +307,46 @@
 
             const post = blogPosts[postId];
 
-            // Cargar contenido del blog
+            // Actualizar contenido del blog
             blogContent.innerHTML = `
                 <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-64 object-cover rounded-lg mb-6">
+                <div class="mb-4">
+                    <a href="category.html?category=${encodeURIComponent(post.category)}" class="px-2 py-1 text-sm bg-neon-purple text-white rounded-full mr-2">${post.category}</a>
+                </div>
                 <h1 class="text-3xl font-bold mb-4 neon-text">${post.title}</h1>
                 ${post.content}
                 <div class="mt-6 flex flex-wrap gap-2">
                     ${post.tags.map(tag => `
-                        <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">${tag}</span>
+                        <a href="tag.html?tag=${encodeURIComponent(tag)}" class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">${tag}</a>
                     `).join('')}
                 </div>
             `;
 
             // Cargar artículos relacionados
             const relatedPosts = Object.values(blogPosts)
-                .filter(p => p.title !== post.title)
+                .filter(p => 
+                    p.title !== post.title && 
+                    (p.category === post.category || 
+                     p.tags.some(tag => post.tags.includes(tag)))
+                )
                 .sort(() => 0.5 - Math.random())
                 .slice(0, 3);
 
             relatedPosts.forEach(relatedPost => {
                 const relatedPostElement = document.createElement('div');
-                relatedPostElement.classList.add('bg-gray-800', 'rounded-lg', 'overflow-hidden', 'neon-border');
+                relatedPostElement.classList.add('bg-gray-800', 'rounded-lg', 'overflow-hidden', 'neon-border', 'flex', 'flex-col');
                 relatedPostElement.innerHTML = `
                     <img src="${relatedPost.imageUrl}" alt="${relatedPost.title}" class="w-full h-48 object-cover">
-                    <div class="p-4">
+                    <div class="p-4 flex-grow flex flex-col">
+                        <div class="mb-2">
+                            <a href="category.html?category=${encodeURIComponent(relatedPost.category)}" class="px-2 py-1 text-xs bg-neon-purple text-white rounded-full mr-2 hover:bg-neon-blue transition-colors">${relatedPost.category}</a>
+                        </div>
                         <a href="blog.html?id=${Object.keys(blogPosts).find(key => blogPosts[key] === relatedPost)}" class="block">
                             <h3 class="text-xl font-bold mb-2 neon-text hover:text-neon-blue transition-colors">${relatedPost.title}</h3>
                         </a>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="mt-auto flex flex-wrap gap-2">
                             ${relatedPost.tags.map(tag => `
-                                <span class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text">${tag}</span>
+                                <a href="tag.html?tag=${encodeURIComponent(tag)}" class="px-2 py-1 text-xs bg-gray-700 rounded-full neon-text hover:bg-neon-purple transition-colors">${tag}</a>
                             `).join('')}
                         </div>
                     </div>
@@ -256,33 +354,133 @@
                 relatedPostsContainer.appendChild(relatedPostElement);
             });
 
+            // Actualizar título del breadcrumb
+            const currentBlogTitle = document.getElementById('current-blog-title');
+            if (currentBlogTitle) {
+                currentBlogTitle.textContent = post.title;
+            }
+
+            // Mostrar sección de compartir
+            const shareSection = document.getElementById('share-section');
+            if (shareSection) {
+                shareSection.classList.remove('hidden');
+            }
+
             blogLoading.classList.add('hidden');
         }
 
         // Cargar el post cuando se carga la página
         document.addEventListener('DOMContentLoaded', loadBlogPost);
 
-        // Función para inicializar los comentarios con el ID del blog
-        function initComments() {
+        // Funciones de compartir permanecen igual
+        function copyBlogLink() {
+            const url = window.location.href;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                const message = document.getElementById('link-copied-message');
+                message.classList.remove('opacity-0');
+                setTimeout(() => {
+                    message.classList.add('opacity-0');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar el enlace: ', err);
+            });
+        }
+
+        function shareOnSocialMedia(platform) {
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
             
-            if (postId) {
-                // Usar el ID del blog como identificador único para los comentarios
-                commentBox('my-project-id', {
-                    defaultBoxId: `blog-post-${postId}`,
-                    backgroundColor: '#1f2937', // Color de fondo similar al tema
-                    textColor: '#ffffff', // Texto blanco
-                    subtextColor: '#9ca3af' // Color de texto secundario
-                });
+            if (!postId || !blogPosts[postId]) {
+                console.error('Post no encontrado');
+                return;
+            }
+
+            const post = blogPosts[postId];
+            const url = window.location.href;
+            const title = post.title;
+            const text = `¡Lee este artículo increíble de KeepToken: ${title}`;
+
+            const socialUrls = {
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
+            };
+
+            if (socialUrls[platform]) {
+                window.open(socialUrls[platform], '_blank', 'width=600,height=400');
             }
         }
-
-        // Llamar a la función de inicialización de comentarios después de cargar el post
-        document.addEventListener('DOMContentLoaded', () => {
-            // Esperar a que se cargue el post antes de inicializar los comentarios
-            setTimeout(initComments, 500);
-        });
     </script>
+
+    <!-- Head Dinámico -->
+    <script src="assets/js/dynamic-head.js"></script>
+    
+    <!-- Otros scripts -->
+    <script src="assets/js/load-partials.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Overlay para el drawer móvil -->
+    <div 
+        id="mobile-drawer-overlay" 
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"
+    ></div>
+
+    <!-- Drawer de navegación móvil -->
+    <div 
+        id="mobile-drawer" 
+        class="fixed top-0 left-0 z-40 h-screen w-64 p-6 bg-gray-900 
+               transform -translate-x-full transition-transform duration-300 ease-in-out 
+               overflow-y-auto"
+        tabindex="-1"
+        aria-labelledby="mobile-drawer-label"
+    >
+        <div class="flex justify-between items-center mb-6">
+            <h5 id="mobile-drawer-label" class="text-base font-semibold text-gray-400 uppercase">Menú</h5>
+            <button 
+                type="button" 
+                data-drawer-hide="mobile-drawer"
+                aria-controls="mobile-drawer"
+                class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white 
+                       rounded-lg text-sm w-8 h-8 inline-flex items-center justify-center"
+            >
+                <i class='bx bx-x text-2xl'></i>
+            </button>
+        </div>
+        
+        <ul class="space-y-2 font-medium">
+            <li>
+                <a href="#inicio" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                    <i class='bx bx-home mr-3'></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a href="#caracteristicas" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                    <i class='bx bx-star mr-3'></i>
+                    <span>Características</span>
+                </a>
+            </li>
+            <li>
+                <a href="#gobernanza" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                    <i class='bx bx-group mr-3'></i>
+                    <span>Gobernanza</span>
+                </a>
+            </li>
+            <li>
+                <a href="#blog" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                    <i class='bx bx-book-content mr-3'></i>
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="#contacto" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 group">
+                    <i class='bx bx-envelope mr-3'></i>
+                    <span>Contacto</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html> 
